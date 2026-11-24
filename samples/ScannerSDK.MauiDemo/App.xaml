@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Application
+    x:Class="ScannerSDK.MauiDemo.App"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="CanvasColor">#F4F7FB</Color>
+            <Color x:Key="SurfaceColor">#FFFFFF</Color>
+            <Color x:Key="InkColor">#0B1220</Color>
+            <Color x:Key="MutedColor">#667085</Color>
+            <Color x:Key="LineColor">#D9E1EC</Color>
+            <Color x:Key="AccentColor">#1367D1</Color>
+            <Color x:Key="AccentSoftColor">#E8F1FD</Color>
+            <Color x:Key="CanvasDarkColor">#101621</Color>
+            <Color x:Key="SurfaceDarkColor">#182130</Color>
+            <Color x:Key="InkDarkColor">#F4F7FB</Color>
+            <Color x:Key="MutedDarkColor">#B5C0CF</Color>
+            <Color x:Key="LineDarkColor">#334155</Color>
+            <Color x:Key="AccentDarkColor">#69A7F8</Color>
+            <Color x:Key="AccentSoftDarkColor">#203A5D</Color>
+            <Color x:Key="WarningSurfaceColor">#FFF4E5</Color>
+            <Color x:Key="WarningStrokeColor">#F4B740</Color>
+            <Color x:Key="WarningSurfaceDarkColor">#3B2A16</Color>
+            <Color x:Key="WarningStrokeDarkColor">#D99A2B</Color>
+
+            <Color x:Key="CurrentCanvasColor">#F4F7FB</Color>
+            <Color x:Key="CurrentSurfaceColor">#FFFFFF</Color>
+            <Color x:Key="CurrentInkColor">#0B1220</Color>
+            <Color x:Key="CurrentMutedColor">#667085</Color>
+            <Color x:Key="CurrentLineColor">#D9E1EC</Color>
+            <Color x:Key="CurrentAccentColor">#1367D1</Color>
+            <Color x:Key="CurrentAccentSoftColor">#E8F1FD</Color>
+            <Color x:Key="CurrentAccentTextColor">#FFFFFF</Color>
+            <Color x:Key="CurrentStatusSurfaceColor">#0B1220</Color>
+            <Color x:Key="CurrentStatusTextColor">#FFFFFF</Color>
+            <Color x:Key="CurrentWarningSurfaceColor">#FFF4E5</Color>
+            <Color x:Key="CurrentWarningStrokeColor">#F4B740</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="TextColor" Value="{DynamicResource CurrentInkColor}" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="FontFamily" Value="Segoe UI" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="Padding" Value="18,11" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource CurrentAccentColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource CurrentAccentTextColor}" />
+                <Setter Property="MinimumHeightRequest" Value="44" />
+            </Style>
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{DynamicResource CurrentAccentSoftColor}" />
+                <Setter Property="TextColor" Value="{DynamicResource CurrentAccentColor}" />
+            </Style>
+            <Style x:Key="SectionTitle" TargetType="Label">
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontAttributes" Value="Bold" />
+            </Style>
+            <Style x:Key="Caption" TargetType="Label">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="TextColor" Value="{DynamicResource CurrentMutedColor}" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

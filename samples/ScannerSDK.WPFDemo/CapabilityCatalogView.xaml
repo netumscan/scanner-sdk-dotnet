@@ -1,0 +1,183 @@
+<UserControl x:Class="ScannerSDK.WPFDemo.CapabilityCatalogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ScannerSDK.WPFDemo">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DemoStyles.xaml" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+    <StackPanel>
+        <Grid Visibility="{Binding IsCapabilityDomainListVisible, Converter={StaticResource BoolToVisibility}}">
+            <StackPanel>
+                <TextBlock FontSize="18" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"
+                           Text="{Binding CapabilityCatalogTitle}" />
+                <TextBlock Margin="0,6,0,12" Foreground="{DynamicResource TextSecondaryBrush}" TextWrapping="Wrap"
+                           Text="{Binding CapabilityCatalogDescription}" />
+
+                <Border Padding="16" Background="{DynamicResource BrandSoftBrush}" CornerRadius="8"
+                        Visibility="{Binding IsLoadingCapabilityCatalog, Converter={StaticResource BoolToVisibility}}">
+                    <TextBlock Foreground="{DynamicResource BrandBrush}" Text="{Binding CapabilityCatalogLoadingText}" />
+                </Border>
+
+                <Border Padding="14" Background="{DynamicResource DangerSoftBrush}" BorderBrush="{DynamicResource DangerBrush}"
+                        BorderThickness="1" CornerRadius="8"
+                        Visibility="{Binding HasCapabilityCatalogError, Converter={StaticResource BoolToVisibility}}">
+                    <StackPanel>
+                        <TextBlock Foreground="{DynamicResource DangerBrush}" TextWrapping="Wrap" Text="{Binding CapabilityCatalogError}" />
+                        <Button Margin="0,10,0,0" Width="110" HorizontalAlignment="Left"
+                                Content="{Binding CapabilityCatalogRetryText}" Command="{Binding RetryCapabilityCatalogCommand}" />
+                    </StackPanel>
+                </Border>
+
+                <TextBlock Margin="0,18" HorizontalAlignment="Center" Foreground="{DynamicResource TextSecondaryBrush}"
+                           Visibility="{Binding IsCapabilityCatalogEmpty, Converter={StaticResource BoolToVisibility}}"
+                           Text="{Binding CapabilityCatalogEmptyText}" />
+
+                <TextBlock Margin="0,0,0,10" Foreground="{DynamicResource TextSecondaryBrush}"
+                           Text="{Binding CapabilityCatalogSummary}" />
+                <ItemsControl ItemsSource="{Binding CapabilityDomains}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Button Height="72" Margin="0,0,0,10" Padding="14,0" HorizontalContentAlignment="Stretch"
+                                    Command="{Binding DataContext.OpenCapabilityDomainCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                    CommandParameter="{Binding}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="48" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="28" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Width="40" Height="40" Background="{DynamicResource BrandSoftBrush}" CornerRadius="8">
+                                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20"
+                                                   Foreground="{DynamicResource BrandBrush}" Text="⚙" />
+                                    </Border>
+                                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="10,0">
+                                        <TextBlock FontSize="15" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}" Text="{Binding Title}" />
+                                        <TextBlock Margin="0,4,0,0" FontSize="11" Foreground="{DynamicResource TextSecondaryBrush}" Text="{Binding Summary}" />
+                                    </StackPanel>
+                                    <Border Grid.Column="2" Padding="9,4" Background="{DynamicResource BrandSoftBrush}" CornerRadius="10" VerticalAlignment="Center">
+                                        <TextBlock FontSize="11" FontWeight="SemiBold" Foreground="{DynamicResource BrandBrush}" Text="{Binding ItemCountText}" />
+                                    </Border>
+                                    <TextBlock Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="25"
+                                               Foreground="{DynamicResource TextSecondaryBrush}" Text="›" />
+                                </Grid>
+                            </Button>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+
+        <Grid Visibility="{Binding IsCapabilityDomainDetailVisible, Converter={StaticResource BoolToVisibility}}">
+            <StackPanel>
+                <DockPanel Margin="0,0,0,12">
+                    <Button DockPanel.Dock="Left" Width="100" Content="{Binding CapabilityBackText}" Command="{Binding BackToCapabilityDomainsCommand}" />
+                    <TextBlock Margin="12,6,0,0" FontSize="18" FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}"
+                               Text="{Binding SelectedCapabilityDomain.Title}" />
+                </DockPanel>
+                <TextBlock Margin="0,0,0,10" Foreground="{DynamicResource TextSecondaryBrush}" Text="{Binding CapabilityDomainDetailSummary}" />
+                <Button Width="180" HorizontalAlignment="Left" Content="{Binding CapabilityReadDomainText}"
+                        Command="{Binding ReadCapabilityDomainCommand}" CommandParameter="{Binding SelectedCapabilityDomain}" />
+
+                <ItemsControl Margin="0,12,0,0" ItemsSource="{Binding SelectedCapabilityDomain.Sections}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="0,0,0,16">
+                                <TextBlock Margin="2,0,0,8" FontSize="13" FontWeight="Bold"
+                                           Foreground="{DynamicResource TextSecondaryBrush}" Text="{Binding Title}" />
+
+                                <Border Background="{DynamicResource SurfaceBrush}" BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1" CornerRadius="8">
+                                    <ItemsControl ItemsSource="{Binding Settings}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid MinHeight="56" Margin="12,5">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1.25*" />
+                                                        <ColumnDefinition Width="0.8*" />
+                                                        <ColumnDefinition Width="1.2*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel VerticalAlignment="Center">
+                                                        <TextBlock FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}" Text="{Binding DisplayName}" />
+                                                        <TextBlock Margin="0,3,0,0" FontSize="10" Foreground="{DynamicResource TextMutedBrush}" Text="{Binding Source}" />
+                                                    </StackPanel>
+                                                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                                        <TextBlock FontSize="10" Foreground="{DynamicResource TextMutedBrush}" Text="{Binding DataContext.CapabilityCurrentText, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                                                        <TextBlock Margin="0,3,0,0" Foreground="{DynamicResource TextPrimaryBrush}" Text="{Binding CurrentValue}" />
+                                                    </StackPanel>
+                                                    <Grid Grid.Column="2" Margin="8,0" VerticalAlignment="Center">
+                                                        <Grid Visibility="{Binding IsBoolean, Converter={StaticResource BoolToVisibility}}">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <RadioButton Grid.Column="0" Content="{Binding BooleanTrueText}"
+                                                                         Style="{StaticResource BooleanSegmentButton}"
+                                                                         IsChecked="{Binding BooleanWriteValue, Mode=TwoWay}" />
+                                                            <RadioButton Grid.Column="1" Margin="-1,0,0,0" Content="{Binding BooleanFalseText}"
+                                                                         Style="{StaticResource BooleanSegmentButton}"
+                                                                         IsChecked="{Binding BooleanWriteValue, Mode=TwoWay, Converter={StaticResource InverseBoolConverter}}" />
+                                                        </Grid>
+                                                        <ComboBox ItemsSource="{Binding OptionItems}" DisplayMemberPath="DisplayName" SelectedValuePath="Value"
+                                                                  SelectedValue="{Binding WriteValue, UpdateSourceTrigger=PropertyChanged}"
+                                                                  Visibility="{Binding IsEnum, Converter={StaticResource BoolToVisibility}}" />
+                                                        <TextBox Height="32" Text="{Binding WriteValue, UpdateSourceTrigger=PropertyChanged}"
+                                                                 Visibility="{Binding UsesTextEditor, Converter={StaticResource BoolToVisibility}}" />
+                                                    </Grid>
+                                                    <CheckBox Grid.Column="3" Margin="4,0,8,0" VerticalAlignment="Center"
+                                                              Content="{Binding DataContext.CapabilityPersistText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                              IsChecked="{Binding PersistWrite}" IsEnabled="{Binding SupportsWrite}" />
+                                                    <WrapPanel Grid.Column="4" VerticalAlignment="Center">
+                                                        <Button Width="68" Content="{Binding DataContext.CapabilityReadText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                Command="{Binding DataContext.ReadCapabilityValueCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                CommandParameter="{Binding}" IsEnabled="{Binding CanReadAction}" />
+                                                        <Button Width="68" Content="{Binding DataContext.CapabilityWriteText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                Command="{Binding DataContext.WriteCapabilityValueCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                CommandParameter="{Binding}" IsEnabled="{Binding CanWriteAction}" />
+                                                    </WrapPanel>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </Border>
+
+                                <ItemsControl Margin="0,8,0,0" ItemsSource="{Binding Actions}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Margin="0,0,0,8" Padding="12" Background="{DynamicResource MutedSurfaceBrush}"
+                                                    BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="8">
+                                                <Grid MinHeight="56">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="1.2*" />
+                                                        <ColumnDefinition Width="1.4*" />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <StackPanel VerticalAlignment="Center">
+                                                        <TextBlock FontWeight="SemiBold" Foreground="{DynamicResource TextPrimaryBrush}" Text="{Binding DisplayName}" />
+                                                        <TextBlock Margin="0,3,0,0" FontSize="10" Foreground="{DynamicResource TextMutedBrush}" Text="{Binding SourceAndRiskText}" />
+                                                    </StackPanel>
+                                                    <TextBox Grid.Column="1" Height="32" Margin="10,0" VerticalAlignment="Center"
+                                                             Text="{Binding InputValue, UpdateSourceTrigger=PropertyChanged}"
+                                                             Visibility="{Binding RequiresValue, Converter={StaticResource BoolToVisibility}}" />
+                                                    <Button Grid.Column="2" Width="110" VerticalAlignment="Center"
+                                                            Content="{Binding DataContext.CapabilityExecuteText, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                            Command="{Binding DataContext.ExecuteCapabilityActionCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                            CommandParameter="{Binding}" />
+                                                </Grid>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+    </ScrollViewer>
+</UserControl>

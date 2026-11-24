@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?><root><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="app_title" xml:space="preserve"><value>ScannerSDK 演示程序</value></data><data name="app_subtitle" xml:space="preserve"><value>WPF 产品演示台 · SDK 动态型号、设备能力、扫码和完整日志</value></data><data name="nav_discovery" xml:space="preserve"><value>设备发现</value></data><data name="nav_console" xml:space="preserve"><value>设备控制台</value></data><data name="nav_logs" xml:space="preserve"><value>应用日志</value></data><data name="tab_discovery" xml:space="preserve"><value>设备发现</value></data><data name="tab_console" xml:space="preserve"><value>设备控制台</value></data><data name="tab_logs" xml:space="preserve"><value>应用日志</value></data><data name="language_label" xml:space="preserve"><value>语言</value></data><data name="language_system" xml:space="preserve"><value>跟随系统</value></data><data name="discovery_workspace_title" xml:space="preserve"><value>发现工作区</value></data><data name="discovery_workspace_caption" xml:space="preserve"><value>从 SDK 加载当前传输支持的型号，再执行发现、选择和连接。</value></data><data name="discovery_metric_status" xml:space="preserve"><value>状态</value></data><data name="discovery_metric_transport" xml:space="preserve"><value>传输方式</value></data><data name="discovery_metric_selected_model" xml:space="preserve"><value>所选型号</value></data><data name="discovery_metric_discovered_devices" xml:space="preserve"><value>已发现设备</value></data><data name="discovery_diagnostics_title" xml:space="preserve"><value>诊断</value></data><data name="discovery_model_label" xml:space="preserve"><value>产品型号</value></data><data name="discovery_transport_label" xml:space="preserve"><value>传输协议</value></data><data name="discovery_usb_trace" xml:space="preserve"><value>USB HID 跟踪</value></data><data name="discovery_selected_model_summary_title" xml:space="preserve"><value>所选型号摘要</value></data><data name="discovery_button_initialize_sdk" xml:space="preserve"><value>初始化 SDK</value></data><data name="discovery_button_start_search" xml:space="preserve"><value>开始搜索</value></data><data name="discovery_button_stop_search" xml:space="preserve"><value>停止搜索</value></data><data name="discovery_button_connect_device" xml:space="preserve"><value>连接设备</value></data><data name="discovery_button_open_console" xml:space="preserve"><value>打开控制台</value></data><data name="discovery_button_disconnect" xml:space="preserve"><value>断开连接</value></data><data name="discovery_devices_title" xml:space="preserve"><value>已发现设备</value></data><data name="discovery_devices_caption" xml:space="preserve"><value>选择一个 SDK 发现的设备并建立会话。</value></data><data name="discovery_current_selection_title" xml:space="preserve"><value>当前选择</value></data><data name="discovery_scenario_presets_title" xml:space="preserve"><value>常用场景</value></data><data name="discovery_scenario_presets_caption" xml:space="preserve"><value>直接进入扫码、设备信息、电量、能力设置或 Data Rules。</value></data><data name="discovery_button_quick_scan" xml:space="preserve"><value>快速扫码</value></data><data name="discovery_button_info" xml:space="preserve"><value>读取信息</value></data><data name="discovery_button_battery" xml:space="preserve"><value>读取电量</value></data><data name="discovery_button_master_commands" xml:space="preserve"><value>常用功能</value></data><data name="discovery_button_product_settings" xml:space="preserve"><value>设备能力</value></data><data name="discovery_button_data_rule" xml:space="preserve"><value>Data Rule 构建器</value></data><data name="discovery_diagnostics_snapshot_title" xml:space="preserve"><value>诊断快照</value></data><data name="discovery_diagnostics_snapshot_caption" xml:space="preserve"><value>集中显示 SDK、传输、会话和当前型号状态。</value></data><data name="console_status_title" xml:space="preserve"><value>控制台状态</value></data><data name="console_status_caption" xml:space="preserve"><value>当前连接、客户选择型号、SDK 解析型号、能力和最近失败。</value></data><data name="console_button_back_to_discovery" xml:space="preserve"><value>返回搜索</value></data><data name="console_button_disconnect" xml:space="preserve"><value>断开连接</value></data><data name="console_metric_session" xml:space="preserve"><value>会话</value></data><data name="console_metric_device" xml:space="preserve"><value>设备</value></data><data name="console_metric_customer_model" xml:space="preserve"><value>客户选择型号</value></data><data name="console_metric_sdk_model" xml:space="preserve"><value>SDK 解析型号</value></data><data name="console_metric_capability" xml:space="preserve"><value>能力摘要</value></data><data name="console_metric_operation_support" xml:space="preserve"><value>操作支持</value></data><data name="console_metric_recent_failure" xml:space="preserve"><value>最近失败</value></data><data name="console_metric_failure_feedback" xml:space="preserve"><value>失败反馈</value></data><data name="console_metric_last_action_result" xml:space="preserve"><value>最近操作结果</value></data><data name="console_tools_title" xml:space="preserve"><value>控制台工具</value></data><data name="console_tools_caption" xml:space="preserve"><value>常用功能、SDK 动态设备能力、Data Rules 和 Diagnostics 在同一会话生命周期内切换。</value></data><data name="console_tab_actions" xml:space="preserve"><value>常用功能</value></data><data name="console_tab_capabilities" xml:space="preserve"><value>设备能力</value></data><data name="console_tab_data_rules" xml:space="preserve"><value>Data Rules</value></data><data name="console_tab_diagnostics" xml:space="preserve"><value>诊断</value></data><data name="scan_workspace_title" xml:space="preserve"><value>扫码工作区</value></data><data name="scan_workspace_caption" xml:space="preserve"><value>保留连接状态、常用控制、扫码次数、最近文本、元数据、Raw Hex 和本地解析。</value></data><data name="scan_workspace_button_initialize" xml:space="preserve"><value>初始化会话</value></data><data name="scan_workspace_button_refresh_info" xml:space="preserve"><value>刷新信息</value></data><data name="scan_workspace_button_battery" xml:space="preserve"><value>读取电量</value></data><data name="scan_workspace_button_trigger_scan" xml:space="preserve"><value>触发扫码</value></data><data name="scan_workspace_button_timestamp" xml:space="preserve"><value>同步时间</value></data><data name="scan_workspace_button_ack_on" xml:space="preserve"><value>开启蜂鸣</value></data><data name="scan_workspace_button_ack_off" xml:space="preserve"><value>关闭蜂鸣</value></data><data name="scan_workspace_button_vibration_on" xml:space="preserve"><value>开启震动</value></data><data name="scan_workspace_button_vibration_off" xml:space="preserve"><value>关闭震动</value></data><data name="scan_workspace_last_scan_title" xml:space="preserve"><value>最近扫码</value></data><data name="scan_workspace_scan_count" xml:space="preserve"><value>扫码次数：{0}</value></data><data name="scan_workspace_parse_title" xml:space="preserve"><value>本地解析控制</value></data><data name="scan_workspace_charset_label" xml:space="preserve"><value>字符集</value></data><data name="scan_workspace_button_apply_charset" xml:space="preserve"><value>应用字符集</value></data><data name="scan_workspace_terminator_label" xml:space="preserve"><value>终止符</value></data><data name="scan_workspace_button_apply_terminator" xml:space="preserve"><value>应用终止符</value></data><data name="capability_catalog_title" xml:space="preserve"><value>设备能力</value></data><data name="capability_catalog_description" xml:space="preserve"><value>领域、设置项、动作、分组、排序、选项和文案均从当前 SDK 会话动态加载。</value></data><data name="capability_catalog_loading" xml:space="preserve"><value>正在加载 SDK 能力目录…</value></data><data name="capability_catalog_empty" xml:space="preserve"><value>当前型号和传输没有可显示的能力。</value></data><data name="capability_catalog_load_failed_detail" xml:space="preserve"><value>能力目录加载失败：{0}</value></data><data name="capability_catalog_summary" xml:space="preserve"><value>{0} 个领域 · {1} 个设置项 · {2} 个动作</value></data><data name="capability_domain_summary" xml:space="preserve"><value>可读 {0} · 可写 {1} · 动作 {2}</value></data><data name="capability_domain_detail_summary" xml:space="preserve"><value>{0} · {1} 个分组 · {2} 个设置项 · {3} 个动作</value></data><data name="capability_item_count" xml:space="preserve"><value>{0} 项</value></data><data name="capability_section_other" xml:space="preserve"><value>其他</value></data><data name="capability_write_risk_confirm" xml:space="preserve"><value>确认将高风险设置“{0}”写为“{1}”吗？</value></data><data name="capability_operation_cancelled" xml:space="preserve"><value>已取消</value></data><data name="capability_status_read" xml:space="preserve"><value>已读取</value></data><data name="capability_status_failed" xml:space="preserve"><value>失败：{0}</value></data><data name="capability_read_domain" xml:space="preserve"><value>读取整个领域</value></data><data name="capability_current" xml:space="preserve"><value>当前值</value></data><data name="capability_persist" xml:space="preserve"><value>持久化</value></data><data name="capability_read" xml:space="preserve"><value>读取</value></data><data name="capability_write" xml:space="preserve"><value>写入</value></data><data name="capability_execute" xml:space="preserve"><value>执行</value></data><data name="retry" xml:space="preserve"><value>重试</value></data><data name="back" xml:space="preserve"><value>返回</value></data><data name="models_loading" xml:space="preserve"><value>正在从 SDK 加载支持型号…</value></data><data name="models_empty" xml:space="preserve"><value>当前传输没有支持的型号。</value></data><data name="models_unavailable" xml:space="preserve"><value>支持型号不可用</value></data><data name="models_load_failed_detail" xml:space="preserve"><value>支持型号加载失败：{0}</value></data><data name="models_select_hint" xml:space="preserve"><value>请等待 SDK 型号目录加载完成，然后选择型号。</value></data><data name="logs_filters_title" xml:space="preserve"><value>日志筛选</value></data><data name="logs_filters_caption" xml:space="preserve"><value>按关键词、来源和等级筛选；支持复制、导出全部或筛选结果及 Compatibility Record。</value></data><data name="logs_button_copy_all" xml:space="preserve"><value>复制全部</value></data><data name="logs_button_copy_filtered" xml:space="preserve"><value>复制筛选结果</value></data><data name="logs_button_export_all" xml:space="preserve"><value>导出全部</value></data><data name="logs_button_export_filtered" xml:space="preserve"><value>导出筛选结果</value></data><data name="logs_button_compatibility" xml:space="preserve"><value>兼容性记录</value></data><data name="logs_button_clear" xml:space="preserve"><value>清空</value></data><data name="logs_column_time" xml:space="preserve"><value>时间</value></data><data name="logs_column_source" xml:space="preserve"><value>来源</value></data><data name="logs_column_level" xml:space="preserve"><value>等级</value></data><data name="logs_column_message" xml:space="preserve"><value>消息</value></data><data name="logs_export_title" xml:space="preserve"><value>Scanner SDK WPF 演示日志</value></data><data name="logs_exported_at" xml:space="preserve"><value>导出时间：{0}</value></data><data name="log_source_discovery" xml:space="preserve"><value>发现</value></data><data name="log_source_session" xml:space="preserve"><value>会话</value></data><data name="log_source_scan" xml:space="preserve"><value>扫码</value></data><data name="log_source_command" xml:space="preserve"><value>命令</value></data><data name="log_level_debug" xml:space="preserve"><value>调试</value></data><data name="log_level_info" xml:space="preserve"><value>信息</value></data><data name="log_level_warn" xml:space="preserve"><value>警告</value></data><data name="log_level_error" xml:space="preserve"><value>错误</value></data><data name="diagnostics_metric_ready_state" xml:space="preserve"><value>就绪状态</value></data><data name="diagnostics_metric_usb_hid_trace" xml:space="preserve"><value>USB HID 跟踪</value></data><data name="diagnostics_status_snapshot_title" xml:space="preserve"><value>状态快照</value></data><data name="diagnostics_status_snapshot_caption" xml:space="preserve"><value>当前 SDK、连接状态、设置数量和跟踪开关摘要。</value></data><data name="diagnostics_result_failure_title" xml:space="preserve"><value>结果 / 失败</value></data><data name="diagnostics_result_failure_caption" xml:space="preserve"><value>分别查看最近结果和最近失败。</value></data><data name="diagnostics_command_trace_title" xml:space="preserve"><value>命令跟踪</value></data><data name="diagnostics_command_trace_caption" xml:space="preserve"><value>最近 20 条 CommandTrace，用于排查命令级问题。</value></data><data name="data_rule_builder_mode" xml:space="preserve"><value>构建模式</value></data><data name="data_rule_value_a" xml:space="preserve"><value>值 A</value></data><data name="data_rule_value_b" xml:space="preserve"><value>值 B</value></data><data name="data_rule_builder_title" xml:space="preserve"><value>Data Rule 构建器</value></data><data name="data_rule_builder_caption" xml:space="preserve"><value>将规则模式、参数输入和执行动作集中在紧凑表单中。</value></data><data name="data_rule_mode" xml:space="preserve"><value>规则模式</value></data><data name="data_rule_primary_value" xml:space="preserve"><value>主要值</value></data><data name="data_rule_secondary_value" xml:space="preserve"><value>次要值</value></data><data name="data_rule_notes_title" xml:space="preserve"><value>构建说明</value></data><data name="data_rule_notes_body" xml:space="preserve"><value>1. Prefix / Suffix 使用文本字节。
+2. HideStart / HideEnd / HideMiddle 输入字节长度。
+3. Replace 同时使用 A/B 两个值。</value></data><data name="data_rule_trace_caption" xml:space="preserve"><value>执行 Data Rule 后，最近的命令跟踪会显示在这里。</value></data><data name="confirm_title" xml:space="preserve"><value>确认：{0}</value></data><data name="save_text_filter" xml:space="preserve"><value>日志/文本文件 (*.log;*.txt)|*.log;*.txt|所有文件 (*.*)|*.*</value></data><data name="logs_include_sensitive_payloads" xml:space="preserve"><value>导出时包含设备标识、扫码内容和原始诊断载荷</value></data><data name="device_action_dangerous_badge" xml:space="preserve">
+    <value>Risky / {0}</value>
+  </data><data name="device_action_normal_badge" xml:space="preserve">
+    <value>Normal / {0}</value>
+  </data><data name="device_action_requirement_none" xml:space="preserve">
+    <value>No input</value>
+  </data><data name="device_action_requirement_required" xml:space="preserve">
+    <value>Input required</value>
+  </data><data name="device_action_risk_connectivity" xml:space="preserve">
+    <value>Connectivity</value>
+  </data><data name="device_action_risk_data_loss" xml:space="preserve">
+    <value>Data loss</value>
+  </data><data name="device_action_risk_destructive" xml:space="preserve">
+    <value>Destructive</value>
+  </data><data name="device_action_risk_normal" xml:space="preserve">
+    <value>Normal</value>
+  </data><data name="device_action_status_cancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data><data name="device_action_status_idle" xml:space="preserve">
+    <value>idle</value>
+  </data><data name="device_action_status_sent" xml:space="preserve">
+    <value>sent</value>
+  </data><data name="device_action_status_acknowledged" xml:space="preserve">
+    <value>acknowledged</value>
+  </data><data name="device_action_panel_title" xml:space="preserve">
+    <value>Device Actions</value>
+  </data><data name="device_action_panel_caption" xml:space="preserve">
+    <value>Actions and localization labels come directly from the SDK capability catalog.</value>
+  </data><data name="device_action_directory_title" xml:space="preserve">
+    <value>Action Directory</value>
+  </data><data name="device_action_selected_title" xml:space="preserve">
+    <value>Selected Action</value>
+  </data><data name="device_action_input_label" xml:space="preserve">
+    <value>Action Input</value>
+  </data><data name="device_action_execute_button" xml:space="preserve">
+    <value>Execute Action</value>
+  </data><data name="device_action_none_selected" xml:space="preserve">
+    <value>No action selected</value>
+  </data><data name="device_action_summary_empty" xml:space="preserve">
+    <value>Select an action to view its key, grouping, risk, and input requirements.</value>
+  </data><data name="device_action_hint_no_definitions" xml:space="preserve">
+    <value>The SDK exposes no device actions for this session.</value>
+  </data><data name="device_action_hint_no_session" xml:space="preserve">
+    <value>Connect a device before executing an action.</value>
+  </data><data name="device_action_hint_not_ready" xml:space="preserve">
+    <value>Actions require a ready session. Current state: {0}.</value>
+  </data><data name="device_action_hint_select_one" xml:space="preserve">
+    <value>Select an action.</value>
+  </data><data name="device_action_hint_dangerous" xml:space="preserve">
+    <value>This action requires confirmation: {0}.</value>
+  </data><data name="device_action_hint_safe" xml:space="preserve">
+    <value>This action can be executed directly: {0}.</value>
+  </data><data name="device_action_cancelled_message" xml:space="preserve">
+    <value>Action cancelled: {0}</value>
+  </data><data name="device_action_confirm_action" xml:space="preserve">
+    <value>Action: {0}</value>
+  </data><data name="device_action_confirm_group" xml:space="preserve">
+    <value>Group: {0}</value>
+  </data><data name="device_action_confirm_risk" xml:space="preserve">
+    <value>Risk: {0}</value>
+  </data><data name="device_action_confirm_input" xml:space="preserve">
+    <value>Input: {0}</value>
+  </data><data name="device_action_confirm_tail" xml:space="preserve">
+    <value>This may immediately change device state. Continue?</value>
+  </data><data name="dynamic_operation_title" xml:space="preserve">
+    <value>当前可用操作</value>
+  </data><data name="dynamic_operation_caption" xml:space="preserve">
+    <value>根据所选型号、当前传输和实际会话能力动态生成。</value>
+  </data><data name="dynamic_operation_empty" xml:space="preserve">
+    <value>当前型号和传输没有可显示的操作。</value>
+  </data><data name="dynamic_operation_semantic_badge" xml:space="preserve">
+    <value>类型安全 SDK 操作</value>
+  </data><data name="dynamic_operation_input_hint" xml:space="preserve">
+    <value>输入此能力动作要求的值。</value>
+  </data><data name="dynamic_operation_available" xml:space="preserve">
+    <value>可用</value>
+  </data><data name="dynamic_operation_disabled_no_session" xml:space="preserve">
+    <value>连接设备后才能执行此操作。</value>
+  </data><data name="dynamic_operation_disabled_not_ready" xml:space="preserve">
+    <value>正在等待会话就绪，当前状态：{0}。</value>
+  </data><data name="dynamic_operation_disabled_busy" xml:space="preserve">
+    <value>另一个设备命令正在执行。</value>
+  </data><data name="dynamic_operation_group_summary" xml:space="preserve">
+    <value>{0} 个操作</value>
+  </data><data name="dynamic_operation_group_session" xml:space="preserve">
+    <value>会话</value>
+  </data><data name="dynamic_operation_group_queries" xml:space="preserve">
+    <value>设备查询</value>
+  </data><data name="dynamic_operation_initialize_description" xml:space="preserve">
+    <value>刷新设备信息、电量数据和实际能力状态。</value>
+  </data><data name="dynamic_operation_refresh_description" xml:space="preserve">
+    <value>读取最新的设备标识和固件信息。</value>
+  </data><data name="dynamic_operation_battery_description" xml:space="preserve">
+    <value>读取当前电压和电量百分比。</value>
+  </data><data name="dynamic_operation_storage_description" xml:space="preserve">
+    <value>读取已存条码数量和存储空间使用情况。</value>
+  </data><data name="dynamic_operation_boolean_description" xml:space="preserve">
+    <value>通过类型安全的 SDK 设置操作开启或关闭此能力。</value>
+  </data><data name="dynamic_operation_timestamp_description" xml:space="preserve">
+    <value>通过类型安全的 SDK 操作写入当前本地时间和 UTC 偏移。</value>
+  </data><data name="dynamic_operation_trigger_description" xml:space="preserve">
+    <value>通过类型安全的 SDK 操作触发一次扫码。</value>
+  </data><data name="dynamic_operation_capability_description" xml:space="preserve">
+    <value>执行 SDK 能力目录提供的设备动作。</value>
+  </data><data name="dynamic_operation_status_running" xml:space="preserve">
+    <value>执行中</value>
+  </data><data name="dynamic_operation_status_completed" xml:space="preserve">
+    <value>已完成</value>
+  </data><data name="dynamic_operation_trigger_sent" xml:space="preserve">
+    <value>已发送触发扫码命令。</value>
+  </data><data name="actions_quick_title" xml:space="preserve">
+    <value>Quick Scenario Entry</value>
+  </data><data name="actions_quick_caption" xml:space="preserve">
+    <value>Curated high-frequency operations aligned with the Android demo.</value>
+  </data><data name="actions_quick_scan_title" xml:space="preserve">
+    <value>Quick Scan</value>
+  </data><data name="actions_quick_scan_caption" xml:space="preserve">
+    <value>Open the scan workspace and trigger one scan.</value>
+  </data><data name="actions_info_title" xml:space="preserve">
+    <value>Info Snapshot</value>
+  </data><data name="actions_info_caption" xml:space="preserve">
+    <value>Read device information and update the result panel.</value>
+  </data><data name="actions_battery_title" xml:space="preserve">
+    <value>Battery Snapshot</value>
+  </data><data name="actions_battery_caption" xml:space="preserve">
+    <value>Read battery information and update the console.</value>
+  </data><data name="actions_storage_title" xml:space="preserve">
+    <value>Storage Snapshot</value>
+  </data><data name="actions_storage_caption" xml:space="preserve">
+    <value>Read stored barcode count or storage usage.</value>
+  </data><data name="actions_advanced_title" xml:space="preserve">
+    <value>Advanced Setup</value>
+  </data><data name="actions_advanced_caption" xml:space="preserve">
+    <value>Open device capabilities or Data Rules for advanced configuration.</value>
+  </data><data name="actions_scan_ops_title" xml:space="preserve">
+    <value>Scan Operations</value>
+  </data><data name="actions_scan_ops_caption" xml:space="preserve">
+    <value>High-frequency scan operations for device integration.</value>
+  </data><data name="actions_feedback_title" xml:space="preserve">
+    <value>Feedback Controls</value>
+  </data><data name="actions_feedback_caption" xml:space="preserve">
+    <value>Beep and vibration controls are grouped separately from scan operations.</value>
+  </data><data name="actions_notes_title" xml:space="preserve">
+    <value>Operator Notes</value>
+  </data><data name="actions_notes_body" xml:space="preserve">
+    <value>1. Confirm that the session is ready.</value>
+  </data><data name="actions_notes_warning" xml:space="preserve">
+    <value>Use Data Rules or Diagnostics when command-level evidence is required.</value>
+  </data><data name="actions_button_quick_scan" xml:space="preserve">
+    <value>Quick Scan</value>
+  </data><data name="actions_button_info" xml:space="preserve">
+    <value>Read Info</value>
+  </data><data name="actions_button_battery" xml:space="preserve">
+    <value>Read Battery</value>
+  </data><data name="actions_button_memory_count" xml:space="preserve">
+    <value>Stored Count</value>
+  </data><data name="actions_button_memory_usage" xml:space="preserve">
+    <value>Storage Usage</value>
+  </data><data name="actions_button_product_settings" xml:space="preserve">
+    <value>Device Capabilities</value>
+  </data><data name="actions_button_data_rule_builder" xml:space="preserve">
+    <value>Data Rule Builder</value>
+  </data><data name="actions_button_trigger_scan" xml:space="preserve">
+    <value>Trigger Scan</value>
+  </data><data name="actions_button_timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data><data name="actions_button_ack_on" xml:space="preserve">
+    <value>Ack On</value>
+  </data><data name="actions_button_ack_off" xml:space="preserve">
+    <value>Ack Off</value>
+  </data><data name="actions_button_vibration_on" xml:space="preserve">
+    <value>Vibration On</value>
+  </data><data name="actions_button_vibration_off" xml:space="preserve">
+    <value>Vibration Off</value>
+  </data><data name="console_tab_master_settings" xml:space="preserve">
+    <value>Master Settings</value>
+  </data><data name="console_tab_module_settings" xml:space="preserve">
+    <value>Module Settings</value>
+  </data><data name="bottom_device_info_title" xml:space="preserve">
+    <value>Device Info</value>
+  </data><data name="bottom_battery_result_title" xml:space="preserve">
+    <value>Battery / Last Result</value>
+  </data><data name="log_source_ui" xml:space="preserve"><value>UI</value></data><data name="log_source_sdk" xml:space="preserve"><value>SDK</value></data><data name="log_source_core" xml:space="preserve"><value>CORE</value></data><data name="log_source_usbhid" xml:space="preserve"><value>USB HID</value></data><data name="log_source_serial" xml:space="preserve"><value>Serial</value></data><data name="serial_target_label" xml:space="preserve"><value>COM 目标</value></data><data name="serial_refresh_ports" xml:space="preserve"><value>刷新端口</value></data><data name="device_action_column_name" xml:space="preserve"><value>名称</value></data><data name="device_action_column_source_risk" xml:space="preserve"><value>来源 / 风险</value></data><data name="device_action_column_status" xml:space="preserve"><value>状态</value></data><data name="fake_mode_banner" xml:space="preserve"><value>FAKE 模式 - 不可作为兼容性证据</value></data><data name="settings_label" xml:space="preserve"><value>设置</value></data></root>

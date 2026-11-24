@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="ScannerSDK.MauiDemo.MainPage"
+    x:Name="RootPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{DynamicResource CurrentCanvasColor}"
+    Title="NT-91 Scanner SDK MAUI Demo">
+    <ScrollView>
+        <VerticalStackLayout x:Name="RootLayout" Padding="32,26,32,40" Spacing="24">
+            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="24">
+                <VerticalStackLayout Spacing="3">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="12"
+                        Text="NETUM · NT-91 · WINDOWS USB HID"
+                        TextColor="{DynamicResource CurrentAccentColor}" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="30"
+                        SemanticProperties.HeadingLevel="Level1"
+                        Text="NT-91 Scanner SDK MAUI Demo" />
+                    <Label
+                        FontSize="14"
+                        Text="Discover, connect, scan, and configure an NT-91 scanner over USB HID."
+                        TextColor="{DynamicResource CurrentMutedColor}" />
+                </VerticalStackLayout>
+                <ActivityIndicator
+                    Grid.Column="1"
+                    HeightRequest="26"
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    SemanticProperties.Description="Operation in progress"
+                    VerticalOptions="Center"
+                    WidthRequest="26" />
+            </Grid>
+
+            <Border
+                BackgroundColor="{DynamicResource CurrentStatusSurfaceColor}"
+                Padding="18,14"
+                StrokeShape="RoundRectangle 10"
+                StrokeThickness="0">
+                <Grid ColumnDefinitions="Auto,*,Auto" ColumnSpacing="18">
+                    <VerticalStackLayout Spacing="1">
+                        <Label FontSize="11" Text="SDK VERSION" TextColor="{DynamicResource CurrentMutedColor}" />
+                        <Label FontAttributes="Bold" Text="{Binding SdkVersion}" TextColor="{DynamicResource CurrentStatusTextColor}" />
+                    </VerticalStackLayout>
+                    <VerticalStackLayout Grid.Column="1" Spacing="1">
+                        <Label FontSize="11" Text="STATUS" TextColor="{DynamicResource CurrentMutedColor}" />
+                        <Label
+                            AutomationId="StatusText"
+                            FontAttributes="Bold"
+                            SemanticProperties.Description="{Binding Status}"
+                            Text="{Binding Status}"
+                            TextColor="{DynamicResource CurrentStatusTextColor}" />
+                    </VerticalStackLayout>
+                    <Label
+                        Grid.Column="2"
+                        FontAttributes="Bold"
+                        Text="USB HID"
+                        TextColor="{DynamicResource CurrentAccentColor}"
+                        VerticalOptions="Center" />
+                </Grid>
+            </Border>
+
+            <Border
+                AutomationId="InitializationErrorPanel"
+                BackgroundColor="{DynamicResource CurrentWarningSurfaceColor}"
+                IsVisible="{Binding HasInitializationError}"
+                Padding="16"
+                Stroke="{DynamicResource CurrentWarningStrokeColor}"
+                StrokeShape="RoundRectangle 10">
+                <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                    <VerticalStackLayout Spacing="3">
+                        <Label FontAttributes="Bold" Text="SDK initialization needs attention" />
+                        <Label Style="{StaticResource Caption}" Text="Check that ScannerSDK.Native.dll is present, then retry initialization." />
+                    </VerticalStackLayout>
+                    <Button
+                        Grid.Column="1"
+                        AutomationId="RetryInitializationButton"
+                        Command="{Binding InitializeCommand}"
+                        SemanticProperties.Description="Retry Scanner SDK initialization"
+                        Style="{StaticResource SecondaryButton}"
+                        Text="Retry Initialization" />
+                </Grid>
+            </Border>
+
+            <Grid x:Name="WorkspaceGrid" ColumnSpacing="28" RowDefinitions="Auto,Auto" RowSpacing="28">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="DiscoveryColumn" Width="360" />
+                    <ColumnDefinition x:Name="SessionColumn" Width="*" />
+                </Grid.ColumnDefinitions>
+                <Border
+                    x:Name="DiscoveryPanel"
+                    BackgroundColor="{DynamicResource CurrentSurfaceColor}"
+                    Padding="22"
+                    Stroke="{DynamicResource CurrentLineColor}"
+                    StrokeShape="RoundRectangle 12"
+                    StrokeThickness="1">
+                    <VerticalStackLayout Spacing="18">
+                        <VerticalStackLayout Spacing="4">
+                            <Label SemanticProperties.HeadingLevel="Level2" Style="{StaticResource SectionTitle}" Text="Connect an NT-91 scanner" />
+                            <Label Style="{StaticResource Caption}" Text="Connect NT-91 over USB HID, then refresh the attached devices." />
+                        </VerticalStackLayout>
+
+                        <Border
+                            AutomationId="TargetDevicePanel"
+                            BackgroundColor="{DynamicResource CurrentAccentSoftColor}"
+                            Padding="14,12"
+                            SemanticProperties.Description="Target device NT-91, USB HID, NT212X module"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 9">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                <VerticalStackLayout Spacing="2">
+                                    <Label FontSize="11" Text="TARGET DEVICE" TextColor="{DynamicResource CurrentMutedColor}" />
+                                    <Label FontAttributes="Bold" FontSize="18" Text="NT-91" />
+                                </VerticalStackLayout>
+                                <Label
+                                    Grid.Column="1"
+                                    Style="{StaticResource Caption}"
+                                    Text="USB HID · NT212X"
+                                    VerticalOptions="Center" />
+                            </Grid>
+                        </Border>
+
+                        <Button
+                            AutomationId="RefreshDevicesButton"
+                            Command="{Binding RefreshDevicesCommand}"
+                            SemanticProperties.Description="Refresh attached NT-91 USB HID scanners"
+                            Text="{Binding RefreshButtonText}" />
+
+                        <BoxView HeightRequest="1" Color="{DynamicResource CurrentLineColor}" />
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label FontAttributes="Bold" FontSize="14" Text="Available NT-91 devices" />
+                            <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding Devices.Count, StringFormat='{0} found'}" />
+                        </Grid>
+
+                        <Label
+                            IsVisible="{Binding HasNoDevices}"
+                            SemanticProperties.Description="{Binding DeviceEmptyMessage}"
+                            Style="{StaticResource Caption}"
+                            Text="{Binding DeviceEmptyMessage}" />
+
+                        <VerticalStackLayout
+                            BindableLayout.ItemsSource="{Binding Devices}"
+                            Spacing="9">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        BackgroundColor="{DynamicResource CurrentCanvasColor}"
+                                        Padding="13"
+                                        SemanticProperties.Description="{Binding AccessibilityDescription}"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 9">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                            <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                                                <Label FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding DisplayName}" />
+                                                <Label Style="{StaticResource Caption}" Text="{Binding ModelSummary}" />
+                                            </VerticalStackLayout>
+                                            <Button
+                                                Grid.Column="1"
+                                                Padding="14,8"
+                                                Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.ConnectCommand}"
+                                                CommandParameter="{Binding .}"
+                                                SemanticProperties.Description="{Binding AccessibilityDescription}"
+                                                Style="{StaticResource SecondaryButton}"
+                                                Text="Connect" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </Border>
+
+                <VerticalStackLayout x:Name="SessionPanel" Grid.Column="1" Spacing="24">
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="18">
+                        <VerticalStackLayout Spacing="4">
+                            <Label SemanticProperties.HeadingLevel="Level2" Style="{StaticResource SectionTitle}" Text="Session" />
+                            <Label Style="{StaticResource Caption}" Text="Settings are loaded from the connected NT-91 session after it reaches Ready." />
+                        </VerticalStackLayout>
+                        <Button
+                            Grid.Column="1"
+                            AutomationId="DisconnectButton"
+                            Command="{Binding DisconnectCommand}"
+                            SemanticProperties.Description="Disconnect the current scanner session"
+                            Style="{StaticResource SecondaryButton}"
+                            Text="Disconnect" />
+                    </Grid>
+
+                    <Grid x:Name="SessionIdentityGrid" ColumnSpacing="24" RowSpacing="14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition x:Name="SessionIdentityColumnTwo" Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition x:Name="SessionIdentityRowTwo" Height="0" />
+                        </Grid.RowDefinitions>
+                        <VerticalStackLayout Spacing="3">
+                            <Label Style="{StaticResource Caption}" Text="CONNECTED DEVICE" />
+                            <Label FontAttributes="Bold" FontSize="17" Text="{Binding ConnectedDeviceName}" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout x:Name="ResolvedModelPanel" Grid.Column="1" Spacing="3">
+                            <Label Style="{StaticResource Caption}" Text="RESOLVED MODEL" />
+                            <Label FontAttributes="Bold" FontSize="17" Text="{Binding ResolvedModel}" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <BoxView HeightRequest="1" Color="{DynamicResource CurrentLineColor}" />
+
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="16">
+                            <VerticalStackLayout Spacing="3">
+                                <Label SemanticProperties.HeadingLevel="Level2" Style="{StaticResource SectionTitle}" Text="Device settings" />
+                                <Label Style="{StaticResource Caption}" Text="Loaded dynamically from the ready NT-91 session. Writes are temporary unless persistence is selected." />
+                            </VerticalStackLayout>
+                            <HorizontalStackLayout Grid.Column="1" Spacing="8">
+                                <Button
+                                    AutomationId="ReloadSettingsButton"
+                                    Command="{Binding ReloadSettingsCommand}"
+                                    Padding="12,7"
+                                    SemanticProperties.Description="Reload supported settings from the connected scanner"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Text="Reload" />
+                                <Button
+                                    AutomationId="ReadAllSettingsButton"
+                                    Command="{Binding ReadAllSettingsCommand}"
+                                    Padding="12,7"
+                                    SemanticProperties.Description="Read all readable settings from the connected scanner"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Text="Read All" />
+                            </HorizontalStackLayout>
+                        </Grid>
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label SemanticProperties.Description="{Binding SettingsStatus}" Style="{StaticResource Caption}" Text="{Binding SettingsStatus}" />
+                            <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding SettingsSummary}" />
+                        </Grid>
+
+                        <Label
+                            IsVisible="{Binding HasLastAction}"
+                            Style="{StaticResource Caption}"
+                            Text="{Binding LastAction}" />
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                            <Entry
+                                x:Name="SettingSearchEntry"
+                                AutomationId="SettingSearchEntry"
+                                ClearButtonVisibility="WhileEditing"
+                                Placeholder="Search settings or domains"
+                                SemanticProperties.Description="Search dynamic settings by name, domain, or subgroup"
+                                Text="{Binding SettingSearchText}" />
+                            <Button
+                                Grid.Column="1"
+                                AutomationId="ClearSettingSearchButton"
+                                Command="{Binding ClearSettingSearchCommand}"
+                                IsVisible="{Binding HasSettingSearch}"
+                                Padding="12,7"
+                                SemanticProperties.Description="Clear the setting search"
+                                Style="{StaticResource SecondaryButton}"
+                                Text="Clear" />
+                        </Grid>
+
+                        <Picker
+                            x:Name="CompactDomainPicker"
+                            AutomationId="CompactDomainPicker"
+                            IsVisible="False"
+                            ItemDisplayBinding="{Binding DisplayName}"
+                            ItemsSource="{Binding SettingGroups}"
+                            SelectedIndexChanged="HandleCompactDomainChanged"
+                            SelectedItem="{Binding SelectedSettingGroup}"
+                            SemanticProperties.Description="Select a first-level setting domain"
+                            Title="Jump to domain" />
+
+                        <Label
+                            IsVisible="{Binding HasNoVisibleSettings}"
+                            SemanticProperties.Description="{Binding SettingsEmptyMessage}"
+                            Style="{StaticResource Caption}"
+                            Text="{Binding SettingsEmptyMessage}" />
+
+                        <Grid x:Name="SettingsBrowserGrid" ColumnSpacing="18">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition x:Name="DomainNavigatorColumn" Width="190" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border
+                                x:Name="DomainNavigatorPanel"
+                                BackgroundColor="{DynamicResource CurrentCanvasColor}"
+                                IsVisible="False"
+                                Padding="8"
+                                Stroke="{DynamicResource CurrentLineColor}"
+                                StrokeShape="RoundRectangle 10">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label FontAttributes="Bold" FontSize="12" Text="DOMAINS" TextColor="{DynamicResource CurrentMutedColor}" />
+                                    <CollectionView
+                                        x:Name="DomainNavigator"
+                                        AutomationId="DomainNavigator"
+                                        ItemsSource="{Binding SettingGroups}"
+                                        SelectedItem="{Binding SelectedSettingGroup}"
+                                        SelectionChanged="HandleDomainSelectionChanged"
+                                        SelectionMode="Single">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border
+                                                    BackgroundColor="Transparent"
+                                                    Margin="0,1"
+                                                    Padding="10,9"
+                                                    StrokeThickness="0"
+                                                    StrokeShape="RoundRectangle 7">
+                                                    <Border.Triggers>
+                                                        <DataTrigger Binding="{Binding IsSelected}" TargetType="Border" Value="True">
+                                                            <Setter Property="BackgroundColor" Value="{DynamicResource CurrentAccentSoftColor}" />
+                                                        </DataTrigger>
+                                                    </Border.Triggers>
+                                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="8">
+                                                        <Label FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding DisplayName}" />
+                                                        <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding Count}" />
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </VerticalStackLayout>
+                            </Border>
+
+                            <CollectionView
+                                x:Name="DynamicSettingsList"
+                                Grid.Column="1"
+                                AutomationId="DynamicSettingsList"
+                                HeightRequest="560"
+                                IsGrouped="True"
+                                IsVisible="{Binding HasVisibleSettings}"
+                                ItemsSource="{Binding SettingGroups}"
+                                Scrolled="HandleSettingsScrolled"
+                                SelectionMode="None">
+                            <CollectionView.GroupHeaderTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        BackgroundColor="{DynamicResource CurrentAccentSoftColor}"
+                                        Margin="0,10,0,10"
+                                        Padding="14,10"
+                                        SemanticProperties.HeadingLevel="Level3"
+                                        StrokeThickness="0"
+                                        StrokeShape="RoundRectangle 9">
+                                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                            <Label FontAttributes="Bold" FontSize="16" Text="{Binding DisplayName}" />
+                                            <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding CountText}" VerticalOptions="Center" />
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.GroupHeaderTemplate>
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border
+                                        BackgroundColor="{DynamicResource CurrentSurfaceColor}"
+                                        Margin="0,0,0,10"
+                                        Padding="14"
+                                        SemanticProperties.Description="{Binding AccessibilityDescription}"
+                                        Stroke="{DynamicResource CurrentLineColor}"
+                                        StrokeShape="RoundRectangle 9">
+                                        <VerticalStackLayout Spacing="9">
+                                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="12">
+                                                <VerticalStackLayout Spacing="2">
+                                                    <Label FontAttributes="Bold" FontSize="14" Text="{Binding DisplayName}" />
+                                                    <Label Style="{StaticResource Caption}" Text="{Binding GroupSummary}" />
+                                                </VerticalStackLayout>
+                                                <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding CapabilitySummary}" />
+                                            </Grid>
+
+                                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                                <Label FontAttributes="Bold" FontSize="12" Text="Current" />
+                                                <Label Grid.Column="1" LineBreakMode="TailTruncation" Text="{Binding CurrentValue}" />
+                                            </Grid>
+
+                                            <HorizontalStackLayout IsVisible="{Binding IsBooleanEditor}" Spacing="10">
+                                                <Label Text="New value" VerticalOptions="Center" />
+                                                <Switch IsToggled="{Binding BooleanWriteValue}" SemanticProperties.Description="Boolean setting value" />
+                                            </HorizontalStackLayout>
+
+                                            <Picker
+                                                IsVisible="{Binding IsEnumEditor}"
+                                                ItemsSource="{Binding Options}"
+                                                SelectedItem="{Binding WriteValue}"
+                                                SemanticProperties.Description="Select a new setting value"
+                                                Title="Select value" />
+
+                                            <Entry
+                                                IsVisible="{Binding UsesTextEditor}"
+                                                Placeholder="{Binding InputHint}"
+                                                SemanticProperties.Description="Enter a new setting value"
+                                                Text="{Binding WriteValue}" />
+
+                                            <HorizontalStackLayout IsVisible="{Binding SupportsWrite}" Spacing="8">
+                                                <CheckBox IsChecked="{Binding PersistWrite}" SemanticProperties.Description="Persist the setting after writing" />
+                                                <Label Text="Persist on device" VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+
+                                            <HorizontalStackLayout IsVisible="{Binding RequiresRiskConfirmation}" Spacing="8">
+                                                <CheckBox IsChecked="{Binding RiskConfirmed}" SemanticProperties.Description="Confirm the setting risk before writing" />
+                                                <Label Text="{Binding RiskText}" TextColor="{DynamicResource CurrentWarningStrokeColor}" VerticalOptions="Center" />
+                                            </HorizontalStackLayout>
+
+                                            <Grid ColumnDefinitions="Auto,Auto,*" ColumnSpacing="8">
+                                                <Button
+                                                    Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.ReadSettingCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    Padding="12,7"
+                                                    SemanticProperties.Description="Read this setting"
+                                                    Style="{StaticResource SecondaryButton}"
+                                                    Text="Read" />
+                                                <Button
+                                                    Grid.Column="1"
+                                                    Command="{Binding Source={x:Reference RootPage}, Path=BindingContext.WriteSettingCommand}"
+                                                    CommandParameter="{Binding .}"
+                                                    Padding="12,7"
+                                                    SemanticProperties.Description="Write this setting"
+                                                    Text="Write" />
+                                                <Label Grid.Column="2" HorizontalTextAlignment="End" Style="{StaticResource Caption}" Text="{Binding Status}" VerticalOptions="Center" />
+                                            </Grid>
+                                        </VerticalStackLayout>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </Grid>
+                    </VerticalStackLayout>
+
+                    <BoxView HeightRequest="1" Color="{DynamicResource CurrentLineColor}" />
+
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto,Auto" ColumnSpacing="12">
+                            <Label SemanticProperties.HeadingLevel="Level2" Style="{StaticResource SectionTitle}" Text="Recent scans" />
+                            <Label Grid.Column="1" Style="{StaticResource Caption}" Text="{Binding ScanCountText}" VerticalOptions="Center" />
+                            <Button
+                                Grid.Column="2"
+                                AutomationId="ClearScansButton"
+                                Command="{Binding ClearScansCommand}"
+                                Padding="12,6"
+                                SemanticProperties.Description="Clear in-memory scan history"
+                                Style="{StaticResource SecondaryButton}"
+                                Text="Clear" />
+                        </Grid>
+                        <Label
+                            IsVisible="{Binding HasNoScans}"
+                            Style="{StaticResource Caption}"
+                            Text="No scans received." />
+                        <VerticalStackLayout
+                            BindableLayout.ItemsSource="{Binding Scans}"
+                            Spacing="0">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Padding="0,10" RowDefinitions="Auto,Auto" RowSpacing="3" SemanticProperties.Description="{Binding AccessibilityDescription}">
+                                        <Label FontAttributes="Bold" LineBreakMode="TailTruncation" Text="{Binding DisplayText}" />
+                                        <Label Grid.Row="1" Style="{StaticResource Caption}" Text="{Binding Summary}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </VerticalStackLayout>
+                    </VerticalStackLayout>
+                </VerticalStackLayout>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

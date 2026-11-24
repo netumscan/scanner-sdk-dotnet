@@ -1,0 +1,179 @@
+<UserControl x:Class="ScannerSDK.WPFDemo.DiscoveryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DemoStyles.xaml" />
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                  HorizontalScrollBarVisibility="Disabled">
+        <Grid Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="360" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Margin="0,0,12,0">
+                <Border Style="{StaticResource SurfaceCard}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiscoveryWorkspaceTitle}" />
+                        <TextBlock Margin="0,4,0,14"
+                                   Style="{StaticResource SectionCaptionText}"
+                                   Text="{Binding DiscoveryWorkspaceCaption}" />
+
+                        <TextBlock FontWeight="SemiBold" Text="{Binding DiscoveryModelLabel}" />
+                        <ComboBox Margin="0,5,0,12"
+                                  ItemsSource="{Binding ModelOptions}"
+                                  SelectedItem="{Binding SelectedModelOption}"
+                                  DisplayMemberPath="Detail"
+                                  IsEnabled="{Binding IsTargetLocked, Converter={StaticResource InverseBoolConverter}}"
+                                  AutomationProperties.Name="{Binding DiscoveryModelLabel}" />
+
+                        <TextBlock FontWeight="SemiBold" Text="{Binding DiscoveryTransportLabel}" />
+                        <ComboBox Margin="0,5,0,12"
+                                  ItemsSource="{Binding TransportOptions}"
+                                  SelectedItem="{Binding SelectedTransportOption}"
+                                  DisplayMemberPath="DisplayName"
+                                  IsEnabled="{Binding IsTargetLocked, Converter={StaticResource InverseBoolConverter}}"
+                                  AutomationProperties.Name="{Binding DiscoveryTransportLabel}" />
+
+                        <Border Padding="10"
+                                Margin="0,0,0,12"
+                                Background="{StaticResource MutedSurfaceBrush}"
+                                BorderBrush="{StaticResource BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="6"
+                                Visibility="{Binding IsSerialTransport, Converter={StaticResource BoolToVisibility}}">
+                            <StackPanel>
+                                <TextBlock FontWeight="SemiBold" Text="{Binding SerialTargetLabelText}" />
+                                <ComboBox Margin="0,5,0,8"
+                                          IsEditable="True"
+                                          ItemsSource="{Binding SerialPorts}"
+                                          Text="{Binding ManualSerialPort, UpdateSourceTrigger=PropertyChanged}"
+                                          IsEnabled="{Binding IsTargetLocked, Converter={StaticResource InverseBoolConverter}}"
+                                          AutomationProperties.Name="{Binding SerialTargetLabelText}" />
+                                <Button HorizontalAlignment="Left"
+                                        Content="{Binding RefreshSerialPortsText}"
+                                        Command="{Binding RefreshSerialPortsCommand}"
+                                        IsEnabled="{Binding IsTargetLocked, Converter={StaticResource InverseBoolConverter}}" />
+                            </StackPanel>
+                        </Border>
+
+                        <CheckBox Margin="0,0,0,12"
+                                  Content="{Binding DiscoveryUsbTraceText}"
+                                  IsChecked="{Binding EnableUsbHidTrace}" />
+                        <TextBlock Foreground="{StaticResource TextSecondaryBrush}"
+                                   Text="{Binding DiscoveryHintText}"
+                                   TextWrapping="Wrap" />
+                        <TextBlock Margin="0,6,0,0"
+                                   Foreground="{StaticResource DangerBrush}"
+                                   Text="{Binding SupportedModelsStatusText}"
+                                   TextWrapping="Wrap" />
+                        <WrapPanel Margin="0,14,0,0">
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{Binding DiscoveryInitializeSdkButtonText}"
+                                    Command="{Binding InitializeSdkCommand}"
+                                    IsEnabled="{Binding CanInitializeSdkSurface}" />
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{Binding DiscoveryStartSearchButtonText}"
+                                    Command="{Binding SearchDevicesCommand}"
+                                    IsEnabled="{Binding CanStartDiscoverySurface}" />
+                            <Button Content="{Binding DiscoveryStopSearchButtonText}"
+                                    Command="{Binding StopDiscoveryCommand}"
+                                    IsEnabled="{Binding CanStopDiscoverySurface}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource SurfaceCard}">
+                    <StackPanel>
+                        <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiscoveryDiagnosticsSnapshotTitle}" />
+                        <TextBox Margin="0,10,0,0"
+                                 MinHeight="160"
+                                 Style="{StaticResource ConsoleInfoTextBox}"
+                                 Text="{Binding DiagnosticsSummary, Mode=OneWay}" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <UniformGrid Columns="4">
+                    <Border Style="{StaticResource MetricCard}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource MetricLabelText}" Text="{Binding DiscoveryMetricStatusTitle}" />
+                            <TextBlock Style="{StaticResource MetricValueText}" Text="{Binding SessionStateText}" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource MetricCard}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource MetricLabelText}" Text="{Binding DiscoveryMetricTransportTitle}" />
+                            <TextBlock Style="{StaticResource MetricValueText}" Text="{Binding SelectedTransportOption.DisplayName}" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource MetricCard}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource MetricLabelText}" Text="{Binding DiscoveryMetricSelectedModelTitle}" />
+                            <TextBlock Style="{StaticResource MetricValueText}" Text="{Binding SelectedModelOption.DisplayName}" />
+                        </StackPanel>
+                    </Border>
+                    <Border Style="{StaticResource MetricCard}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource MetricLabelText}" Text="{Binding DiscoveryMetricDiscoveredDevicesTitle}" />
+                            <TextBlock Style="{StaticResource MetricValueText}" Text="{Binding DiscoveryDevices.Count}" />
+                        </StackPanel>
+                    </Border>
+                </UniformGrid>
+
+                <Border Style="{StaticResource SurfaceCard}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiscoveryDevicesTitle}" />
+                        <ListBox Grid.Row="1"
+                                 MinHeight="290"
+                                 Margin="0,12,0,12"
+                                 ItemsSource="{Binding DiscoveryDevices}"
+                                 SelectedItem="{Binding SelectedDiscoveryDevice}"
+                                 BorderBrush="{StaticResource BorderBrush}"
+                                 AutomationProperties.Name="{Binding DiscoveryDevicesTitle}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid Margin="8">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Name}" />
+                                            <TextBlock Foreground="{StaticResource TextSecondaryBrush}" Text="{Binding DeviceId}" />
+                                            <TextBlock Foreground="{StaticResource TextMutedBrush}" Text="{Binding Detail}" TextWrapping="Wrap" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="16,0,0,0">
+                                            <TextBlock Foreground="{StaticResource BrandBrush}" Text="{Binding TransportType}" />
+                                            <TextBlock Foreground="{StaticResource TextMutedBrush}" Text="{Binding ModelKey}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <WrapPanel Grid.Row="2">
+                            <Button Style="{StaticResource PrimaryButton}"
+                                    Content="{Binding DiscoveryConnectDeviceButtonText}"
+                                    Command="{Binding ConnectSelectedDeviceCommand}"
+                                    IsEnabled="{Binding CanConnectSelectedDeviceSurface}" />
+                            <Button Content="{Binding DiscoveryOpenConsoleButtonText}"
+                                    Command="{Binding OpenConsoleCommand}"
+                                    IsEnabled="{Binding CanOpenConsoleSurface}" />
+                            <Button Style="{StaticResource DangerButton}"
+                                    Content="{Binding DiscoveryDisconnectButtonText}"
+                                    Command="{Binding DisconnectCommand}"
+                                    IsEnabled="{Binding CanDisconnectSurface}" />
+                        </WrapPanel>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

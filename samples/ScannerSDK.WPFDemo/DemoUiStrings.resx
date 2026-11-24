@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?><root><resheader name="resmimetype"><value>text/microsoft-resx</value></resheader><resheader name="version"><value>2.0</value></resheader><resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader><data name="device_action_dangerous_badge" xml:space="preserve">
+    <value>Risky / {0}</value>
+  </data><data name="device_action_normal_badge" xml:space="preserve">
+    <value>Normal / {0}</value>
+  </data><data name="device_action_requirement_none" xml:space="preserve">
+    <value>No input</value>
+  </data><data name="device_action_requirement_required" xml:space="preserve">
+    <value>Input required</value>
+  </data><data name="device_action_risk_connectivity" xml:space="preserve">
+    <value>Connectivity</value>
+  </data><data name="device_action_risk_data_loss" xml:space="preserve">
+    <value>Data loss</value>
+  </data><data name="device_action_risk_destructive" xml:space="preserve">
+    <value>Destructive</value>
+  </data><data name="device_action_risk_normal" xml:space="preserve">
+    <value>Normal</value>
+  </data><data name="device_action_status_cancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data><data name="device_action_status_idle" xml:space="preserve">
+    <value>idle</value>
+  </data><data name="device_action_status_sent" xml:space="preserve">
+    <value>sent</value>
+  </data><data name="device_action_status_acknowledged" xml:space="preserve">
+    <value>acknowledged</value>
+  </data><data name="device_action_panel_title" xml:space="preserve">
+    <value>Device Actions</value>
+  </data><data name="device_action_panel_caption" xml:space="preserve">
+    <value>Actions and localization labels come directly from the SDK capability catalog.</value>
+  </data><data name="device_action_directory_title" xml:space="preserve">
+    <value>Action Directory</value>
+  </data><data name="device_action_selected_title" xml:space="preserve">
+    <value>Selected Action</value>
+  </data><data name="device_action_input_label" xml:space="preserve">
+    <value>Action Input</value>
+  </data><data name="device_action_execute_button" xml:space="preserve">
+    <value>Execute Action</value>
+  </data><data name="device_action_none_selected" xml:space="preserve">
+    <value>No action selected</value>
+  </data><data name="device_action_summary_empty" xml:space="preserve">
+    <value>Select an action to view its key, grouping, risk, and input requirements.</value>
+  </data><data name="device_action_hint_no_definitions" xml:space="preserve">
+    <value>The SDK exposes no device actions for this session.</value>
+  </data><data name="device_action_hint_no_session" xml:space="preserve">
+    <value>Connect a device before executing an action.</value>
+  </data><data name="device_action_hint_not_ready" xml:space="preserve">
+    <value>Actions require a ready session. Current state: {0}.</value>
+  </data><data name="device_action_hint_select_one" xml:space="preserve">
+    <value>Select an action.</value>
+  </data><data name="device_action_hint_dangerous" xml:space="preserve">
+    <value>This action requires confirmation: {0}.</value>
+  </data><data name="device_action_hint_safe" xml:space="preserve">
+    <value>This action can be executed directly: {0}.</value>
+  </data><data name="device_action_cancelled_message" xml:space="preserve">
+    <value>Action cancelled: {0}</value>
+  </data><data name="device_action_confirm_action" xml:space="preserve">
+    <value>Action: {0}</value>
+  </data><data name="device_action_confirm_group" xml:space="preserve">
+    <value>Group: {0}</value>
+  </data><data name="device_action_confirm_risk" xml:space="preserve">
+    <value>Risk: {0}</value>
+  </data><data name="device_action_confirm_input" xml:space="preserve">
+    <value>Input: {0}</value>
+  </data><data name="device_action_confirm_tail" xml:space="preserve">
+    <value>This may immediately change device state. Continue?</value>
+  </data><data name="dynamic_operation_title" xml:space="preserve">
+    <value>Available Operations</value>
+  </data><data name="dynamic_operation_caption" xml:space="preserve">
+    <value>Generated from the selected model, current transport, and resolved session capabilities.</value>
+  </data><data name="dynamic_operation_empty" xml:space="preserve">
+    <value>No operations are exposed for the current model and transport.</value>
+  </data><data name="dynamic_operation_semantic_badge" xml:space="preserve">
+    <value>Typed SDK operation</value>
+  </data><data name="dynamic_operation_input_hint" xml:space="preserve">
+    <value>Enter the value required by this capability action.</value>
+  </data><data name="dynamic_operation_available" xml:space="preserve">
+    <value>Available</value>
+  </data><data name="dynamic_operation_disabled_no_session" xml:space="preserve">
+    <value>Connect a device to use this operation.</value>
+  </data><data name="dynamic_operation_disabled_not_ready" xml:space="preserve">
+    <value>Waiting for a ready session. Current state: {0}.</value>
+  </data><data name="dynamic_operation_disabled_busy" xml:space="preserve">
+    <value>Another device command is running.</value>
+  </data><data name="dynamic_operation_group_summary" xml:space="preserve">
+    <value>{0} operation(s)</value>
+  </data><data name="dynamic_operation_group_session" xml:space="preserve">
+    <value>Session</value>
+  </data><data name="dynamic_operation_group_queries" xml:space="preserve">
+    <value>Device Queries</value>
+  </data><data name="dynamic_operation_initialize_description" xml:space="preserve">
+    <value>Refresh scanner information, battery data, and resolved capability state.</value>
+  </data><data name="dynamic_operation_refresh_description" xml:space="preserve">
+    <value>Read the latest scanner identity and firmware information.</value>
+  </data><data name="dynamic_operation_battery_description" xml:space="preserve">
+    <value>Read the current voltage and battery percentage.</value>
+  </data><data name="dynamic_operation_storage_description" xml:space="preserve">
+    <value>Read stored barcode count and storage utilization.</value>
+  </data><data name="dynamic_operation_boolean_description" xml:space="preserve">
+    <value>Use the typed SDK setting operation to enable or disable this capability.</value>
+  </data><data name="dynamic_operation_timestamp_description" xml:space="preserve">
+    <value>Write the current local time and UTC offset through the typed SDK operation.</value>
+  </data><data name="dynamic_operation_trigger_description" xml:space="preserve">
+    <value>Trigger one scan through the typed SDK operation.</value>
+  </data><data name="dynamic_operation_capability_description" xml:space="preserve">
+    <value>Execute this action from the SDK capability catalog.</value>
+  </data><data name="dynamic_operation_status_running" xml:space="preserve">
+    <value>running</value>
+  </data><data name="dynamic_operation_status_completed" xml:space="preserve">
+    <value>completed</value>
+  </data><data name="dynamic_operation_trigger_sent" xml:space="preserve">
+    <value>Trigger scan command sent.</value>
+  </data><data name="actions_quick_title" xml:space="preserve">
+    <value>Quick Scenario Entry</value>
+  </data><data name="actions_quick_caption" xml:space="preserve">
+    <value>Curated high-frequency operations aligned with the Android demo.</value>
+  </data><data name="actions_quick_scan_title" xml:space="preserve">
+    <value>Quick Scan</value>
+  </data><data name="actions_quick_scan_caption" xml:space="preserve">
+    <value>Open the scan workspace and trigger one scan.</value>
+  </data><data name="actions_info_title" xml:space="preserve">
+    <value>Info Snapshot</value>
+  </data><data name="actions_info_caption" xml:space="preserve">
+    <value>Read device information and update the result panel.</value>
+  </data><data name="actions_battery_title" xml:space="preserve">
+    <value>Battery Snapshot</value>
+  </data><data name="actions_battery_caption" xml:space="preserve">
+    <value>Read battery information and update the console.</value>
+  </data><data name="actions_storage_title" xml:space="preserve">
+    <value>Storage Snapshot</value>
+  </data><data name="actions_storage_caption" xml:space="preserve">
+    <value>Read stored barcode count or storage usage.</value>
+  </data><data name="actions_advanced_title" xml:space="preserve">
+    <value>Advanced Setup</value>
+  </data><data name="actions_advanced_caption" xml:space="preserve">
+    <value>Open device capabilities or Data Rules for advanced configuration.</value>
+  </data><data name="actions_scan_ops_title" xml:space="preserve">
+    <value>Scan Operations</value>
+  </data><data name="actions_scan_ops_caption" xml:space="preserve">
+    <value>High-frequency scan operations for device integration.</value>
+  </data><data name="actions_feedback_title" xml:space="preserve">
+    <value>Feedback Controls</value>
+  </data><data name="actions_feedback_caption" xml:space="preserve">
+    <value>Beep and vibration controls are grouped separately from scan operations.</value>
+  </data><data name="actions_notes_title" xml:space="preserve">
+    <value>Operator Notes</value>
+  </data><data name="actions_notes_body" xml:space="preserve">
+    <value>1. Confirm that the session is ready.</value>
+  </data><data name="actions_notes_warning" xml:space="preserve">
+    <value>Use Data Rules or Diagnostics when command-level evidence is required.</value>
+  </data><data name="actions_button_quick_scan" xml:space="preserve">
+    <value>Quick Scan</value>
+  </data><data name="actions_button_info" xml:space="preserve">
+    <value>Read Info</value>
+  </data><data name="actions_button_battery" xml:space="preserve">
+    <value>Read Battery</value>
+  </data><data name="actions_button_memory_count" xml:space="preserve">
+    <value>Stored Count</value>
+  </data><data name="actions_button_memory_usage" xml:space="preserve">
+    <value>Storage Usage</value>
+  </data><data name="actions_button_product_settings" xml:space="preserve">
+    <value>Device Capabilities</value>
+  </data><data name="actions_button_data_rule_builder" xml:space="preserve">
+    <value>Data Rule Builder</value>
+  </data><data name="actions_button_trigger_scan" xml:space="preserve">
+    <value>Trigger Scan</value>
+  </data><data name="actions_button_timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data><data name="actions_button_ack_on" xml:space="preserve">
+    <value>Ack On</value>
+  </data><data name="actions_button_ack_off" xml:space="preserve">
+    <value>Ack Off</value>
+  </data><data name="actions_button_vibration_on" xml:space="preserve">
+    <value>Vibration On</value>
+  </data><data name="actions_button_vibration_off" xml:space="preserve">
+    <value>Vibration Off</value>
+  </data><data name="scan_workspace_title" xml:space="preserve">
+    <value>Scan Workspace</value>
+  </data><data name="scan_workspace_caption" xml:space="preserve">
+    <value>Connection status, common controls, scan count, recent text, metadata, raw hex, and local parsing.</value>
+  </data><data name="scan_workspace_button_initialize" xml:space="preserve">
+    <value>Initialize</value>
+  </data><data name="scan_workspace_button_refresh_info" xml:space="preserve">
+    <value>Refresh Info</value>
+  </data><data name="scan_workspace_button_battery" xml:space="preserve">
+    <value>Battery</value>
+  </data><data name="scan_workspace_button_trigger_scan" xml:space="preserve">
+    <value>Trigger Scan</value>
+  </data><data name="scan_workspace_button_timestamp" xml:space="preserve">
+    <value>Timestamp</value>
+  </data><data name="scan_workspace_button_ack_on" xml:space="preserve">
+    <value>Ack On</value>
+  </data><data name="scan_workspace_button_ack_off" xml:space="preserve">
+    <value>Ack Off</value>
+  </data><data name="scan_workspace_button_vibration_on" xml:space="preserve">
+    <value>Vibration On</value>
+  </data><data name="scan_workspace_button_vibration_off" xml:space="preserve">
+    <value>Vibration Off</value>
+  </data><data name="scan_workspace_last_scan_title" xml:space="preserve">
+    <value>Last Scan</value>
+  </data><data name="scan_workspace_scan_count" xml:space="preserve">
+    <value>Scan count: {0}</value>
+  </data><data name="scan_workspace_parse_title" xml:space="preserve">
+    <value>Local Parse Controls</value>
+  </data><data name="scan_workspace_charset_label" xml:space="preserve">
+    <value>Charset</value>
+  </data><data name="scan_workspace_button_apply_charset" xml:space="preserve">
+    <value>Apply Charset</value>
+  </data><data name="scan_workspace_terminator_label" xml:space="preserve">
+    <value>Terminator</value>
+  </data><data name="scan_workspace_button_apply_terminator" xml:space="preserve">
+    <value>Apply Terminator</value>
+  </data><data name="app_title" xml:space="preserve">
+    <value>ScannerSDK Demo</value>
+  </data><data name="app_subtitle" xml:space="preserve">
+    <value>WPF product demo · SDK-driven discovery, capabilities, scan workspace, and complete logs</value>
+  </data><data name="nav_discovery" xml:space="preserve">
+    <value>Scanner Discovery</value>
+  </data><data name="nav_console" xml:space="preserve">
+    <value>Scanner Control Console</value>
+  </data><data name="nav_logs" xml:space="preserve">
+    <value>App Logs</value>
+  </data><data name="tab_discovery" xml:space="preserve">
+    <value>Scanner Discovery</value>
+  </data><data name="discovery_workspace_title" xml:space="preserve">
+    <value>Discovery Workspace</value>
+  </data><data name="discovery_workspace_caption" xml:space="preserve">
+    <value>Load supported models for the selected transport from the SDK, then discover, select, and connect a device.</value>
+  </data><data name="discovery_metric_status" xml:space="preserve">
+    <value>Status</value>
+  </data><data name="discovery_metric_transport" xml:space="preserve">
+    <value>Transport Mode</value>
+  </data><data name="discovery_metric_selected_model" xml:space="preserve">
+    <value>Selected Model</value>
+  </data><data name="discovery_metric_discovered_devices" xml:space="preserve">
+    <value>Discovered Devices</value>
+  </data><data name="discovery_diagnostics_title" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data><data name="discovery_model_label" xml:space="preserve">
+    <value>Product Model</value>
+  </data><data name="discovery_transport_label" xml:space="preserve">
+    <value>Transport</value>
+  </data><data name="discovery_usb_trace" xml:space="preserve">
+    <value>USB HID trace</value>
+  </data><data name="discovery_selected_model_summary_title" xml:space="preserve">
+    <value>Selected Model Summary</value>
+  </data><data name="discovery_button_initialize_sdk" xml:space="preserve">
+    <value>Initialize SDK</value>
+  </data><data name="discovery_button_start_search" xml:space="preserve">
+    <value>Start Search</value>
+  </data><data name="discovery_button_stop_search" xml:space="preserve">
+    <value>Stop Search</value>
+  </data><data name="discovery_button_connect_device" xml:space="preserve">
+    <value>Connect Device</value>
+  </data><data name="discovery_button_open_console" xml:space="preserve">
+    <value>Open Console</value>
+  </data><data name="discovery_button_disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data><data name="discovery_devices_title" xml:space="preserve">
+    <value>Discovered Devices</value>
+  </data><data name="discovery_devices_caption" xml:space="preserve">
+    <value>Select a device discovered by the SDK and create a session.</value>
+  </data><data name="discovery_current_selection_title" xml:space="preserve">
+    <value>Current Selection</value>
+  </data><data name="discovery_scenario_presets_title" xml:space="preserve">
+    <value>Scenario Presets</value>
+  </data><data name="discovery_scenario_presets_caption" xml:space="preserve">
+    <value>Open scan, device info, battery, capabilities, or Data Rules directly.</value>
+  </data><data name="discovery_button_quick_scan" xml:space="preserve">
+    <value>Quick Scan</value>
+  </data><data name="discovery_button_info" xml:space="preserve">
+    <value>Read Info</value>
+  </data><data name="discovery_button_battery" xml:space="preserve">
+    <value>Read Battery</value>
+  </data><data name="discovery_button_master_commands" xml:space="preserve">
+    <value>Common Functions</value>
+  </data><data name="discovery_button_product_settings" xml:space="preserve">
+    <value>Device Capabilities</value>
+  </data><data name="discovery_button_data_rule" xml:space="preserve">
+    <value>Data Rule Builder</value>
+  </data><data name="discovery_diagnostics_snapshot_title" xml:space="preserve">
+    <value>Diagnostics Snapshot</value>
+  </data><data name="discovery_diagnostics_snapshot_caption" xml:space="preserve">
+    <value>SDK, transport, session, and selected-model status in one place.</value>
+  </data><data name="tab_logs" xml:space="preserve">
+    <value>App Logs</value>
+  </data><data name="logs_filters_title" xml:space="preserve">
+    <value>Log Filters</value>
+  </data><data name="logs_filters_caption" xml:space="preserve">
+    <value>Filter by keyword, source, and level; copy or export all logs, filtered logs, and compatibility records.</value>
+  </data><data name="logs_button_copy_all" xml:space="preserve">
+    <value>Copy All</value>
+  </data><data name="logs_button_copy_filtered" xml:space="preserve">
+    <value>Copy Filtered</value>
+  </data><data name="logs_button_export_all" xml:space="preserve">
+    <value>Export All</value>
+  </data><data name="logs_button_export_filtered" xml:space="preserve">
+    <value>Export Filtered</value>
+  </data><data name="logs_button_compatibility" xml:space="preserve">
+    <value>Compatibility</value>
+  </data><data name="logs_button_clear" xml:space="preserve">
+    <value>Clear</value>
+  </data><data name="logs_column_time" xml:space="preserve">
+    <value>Time</value>
+  </data><data name="logs_column_source" xml:space="preserve">
+    <value>Source</value>
+  </data><data name="logs_column_level" xml:space="preserve">
+    <value>Level</value>
+  </data><data name="logs_column_message" xml:space="preserve">
+    <value>Message</value>
+  </data><data name="tab_console" xml:space="preserve">
+    <value>Scanner Control Console</value>
+  </data><data name="console_status_title" xml:space="preserve">
+    <value>Console Status</value>
+  </data><data name="console_status_caption" xml:space="preserve">
+    <value>Current connection, selected model, SDK-resolved model, capabilities, and recent failure.</value>
+  </data><data name="console_button_back_to_discovery" xml:space="preserve">
+    <value>Back to Discovery</value>
+  </data><data name="console_button_disconnect" xml:space="preserve">
+    <value>Disconnect</value>
+  </data><data name="console_metric_session" xml:space="preserve">
+    <value>Session</value>
+  </data><data name="console_metric_device" xml:space="preserve">
+    <value>Device</value>
+  </data><data name="console_metric_customer_model" xml:space="preserve">
+    <value>Customer Selected Model</value>
+  </data><data name="console_metric_sdk_model" xml:space="preserve">
+    <value>SDK Resolved Model</value>
+  </data><data name="console_metric_capability" xml:space="preserve">
+    <value>Capability Summary</value>
+  </data><data name="console_metric_operation_support" xml:space="preserve">
+    <value>Operation Support</value>
+  </data><data name="console_metric_recent_failure" xml:space="preserve">
+    <value>Recent Failure</value>
+  </data><data name="console_metric_failure_feedback" xml:space="preserve">
+    <value>Failure Feedback</value>
+  </data><data name="console_metric_last_action_result" xml:space="preserve">
+    <value>Last Action Result</value>
+  </data><data name="console_tools_title" xml:space="preserve">
+    <value>Console Tools</value>
+  </data><data name="console_tools_caption" xml:space="preserve">
+    <value>The console keeps common operations, SDK-driven device capabilities, Data Rules, and diagnostics in one lifecycle.</value>
+  </data><data name="console_tab_actions" xml:space="preserve">
+    <value>Common</value>
+  </data><data name="console_tab_master_settings" xml:space="preserve">
+    <value>Master Settings</value>
+  </data><data name="console_tab_module_settings" xml:space="preserve">
+    <value>Module Settings</value>
+  </data><data name="console_tab_data_rules" xml:space="preserve">
+    <value>Data Rules</value>
+  </data><data name="console_tab_diagnostics" xml:space="preserve">
+    <value>Diagnostics</value>
+  </data><data name="diagnostics_metric_ready_state" xml:space="preserve">
+    <value>Ready State</value>
+  </data><data name="diagnostics_metric_usb_hid_trace" xml:space="preserve">
+    <value>USB HID Trace</value>
+  </data><data name="diagnostics_status_snapshot_title" xml:space="preserve">
+    <value>Status Snapshot</value>
+  </data><data name="diagnostics_status_snapshot_caption" xml:space="preserve">
+    <value>Current SDK, connection, setting count, and trace status.</value>
+  </data><data name="diagnostics_result_failure_title" xml:space="preserve">
+    <value>Result / Failure</value>
+  </data><data name="diagnostics_result_failure_caption" xml:space="preserve">
+    <value>Recent results and failures remain separate from the full event log.</value>
+  </data><data name="diagnostics_command_trace_title" xml:space="preserve">
+    <value>Command Trace</value>
+  </data><data name="diagnostics_command_trace_caption" xml:space="preserve">
+    <value>The latest 20 CommandTrace records for command-level diagnostics.</value>
+  </data><data name="bottom_device_info_title" xml:space="preserve">
+    <value>Device Info</value>
+  </data><data name="bottom_battery_result_title" xml:space="preserve">
+    <value>Battery / Last Result</value>
+  </data><data name="console_tab_capabilities" xml:space="preserve">
+    <value>Device Capabilities</value>
+  </data><data name="capability_catalog_title" xml:space="preserve">
+    <value>Device Capabilities</value>
+  </data><data name="capability_catalog_description" xml:space="preserve">
+    <value>Domains, settings, actions, grouping, ordering, options, and labels are loaded from the current SDK session.</value>
+  </data><data name="capability_catalog_loading" xml:space="preserve">
+    <value>Loading the SDK capability catalog…</value>
+  </data><data name="capability_catalog_empty" xml:space="preserve">
+    <value>No visible capabilities are available for the current model and transport.</value>
+  </data><data name="capability_catalog_load_failed_detail" xml:space="preserve">
+    <value>Capability catalog loading failed: {0}</value>
+  </data><data name="capability_catalog_summary" xml:space="preserve">
+    <value>{0} domains · {1} settings · {2} actions</value>
+  </data><data name="capability_domain_summary" xml:space="preserve">
+    <value>Read {0} · Write {1} · Actions {2}</value>
+  </data><data name="capability_domain_detail_summary" xml:space="preserve">
+    <value>{0} · {1} sections · {2} settings · {3} actions</value>
+  </data><data name="capability_item_count" xml:space="preserve">
+    <value>{0} items</value>
+  </data><data name="capability_section_other" xml:space="preserve">
+    <value>Other</value>
+  </data><data name="capability_write_risk_confirm" xml:space="preserve">
+    <value>Write the risky setting “{0}” with value “{1}”?</value>
+  </data><data name="capability_operation_cancelled" xml:space="preserve">
+    <value>cancelled</value>
+  </data><data name="capability_status_read" xml:space="preserve">
+    <value>read</value>
+  </data><data name="capability_status_failed" xml:space="preserve">
+    <value>failed: {0}</value>
+  </data><data name="capability_read_domain" xml:space="preserve">
+    <value>Read Domain</value>
+  </data><data name="capability_current" xml:space="preserve">
+    <value>Current</value>
+  </data><data name="capability_persist" xml:space="preserve">
+    <value>Persist</value>
+  </data><data name="capability_read" xml:space="preserve">
+    <value>Read</value>
+  </data><data name="capability_write" xml:space="preserve">
+    <value>Write</value>
+  </data><data name="capability_execute" xml:space="preserve">
+    <value>Execute</value>
+  </data><data name="retry" xml:space="preserve">
+    <value>Retry</value>
+  </data><data name="back" xml:space="preserve">
+    <value>Back</value>
+  </data><data name="language_label" xml:space="preserve">
+    <value>Language</value>
+  </data><data name="language_system" xml:space="preserve">
+    <value>System</value>
+  </data><data name="logs_export_title" xml:space="preserve">
+    <value>Scanner SDK WPF Demo Logs</value>
+  </data><data name="logs_exported_at" xml:space="preserve">
+    <value>Exported at: {0}</value>
+  </data><data name="log_source_ui" xml:space="preserve"><value>UI</value></data><data name="log_source_sdk" xml:space="preserve"><value>SDK</value></data><data name="log_source_core" xml:space="preserve"><value>CORE</value></data><data name="log_source_discovery" xml:space="preserve"><value>Discovery</value></data><data name="log_source_session" xml:space="preserve"><value>Session</value></data><data name="log_source_scan" xml:space="preserve"><value>Scan</value></data><data name="log_source_command" xml:space="preserve"><value>Command</value></data><data name="log_source_usbhid" xml:space="preserve"><value>USB HID</value></data><data name="log_source_serial" xml:space="preserve"><value>Serial</value></data><data name="log_level_debug" xml:space="preserve"><value>Debug</value></data><data name="log_level_info" xml:space="preserve"><value>Info</value></data><data name="log_level_warn" xml:space="preserve"><value>Warn</value></data><data name="log_level_error" xml:space="preserve"><value>Error</value></data><data name="models_loading" xml:space="preserve">
+    <value>Loading supported models from the SDK…</value>
+  </data><data name="models_empty" xml:space="preserve">
+    <value>No supported models are available for this transport.</value>
+  </data><data name="models_unavailable" xml:space="preserve">
+    <value>Supported models unavailable</value>
+  </data><data name="models_load_failed_detail" xml:space="preserve">
+    <value>Supported model loading failed: {0}</value>
+  </data><data name="models_select_hint" xml:space="preserve">
+    <value>Wait for the SDK model catalog to load, then select a model.</value>
+  </data><data name="data_rule_builder_mode" xml:space="preserve"><value>Builder Mode</value></data><data name="data_rule_value_a" xml:space="preserve"><value>Value A</value></data><data name="data_rule_value_b" xml:space="preserve"><value>Value B</value></data><data name="data_rule_builder_title" xml:space="preserve"><value>Data Rule Builder</value></data><data name="data_rule_builder_caption" xml:space="preserve"><value>Rule mode, parameters, and execution are kept in one compact form.</value></data><data name="data_rule_mode" xml:space="preserve"><value>Rule Mode</value></data><data name="data_rule_primary_value" xml:space="preserve"><value>Primary Value</value></data><data name="data_rule_secondary_value" xml:space="preserve"><value>Secondary Value</value></data><data name="data_rule_notes_title" xml:space="preserve"><value>Builder Notes</value></data><data name="data_rule_notes_body" xml:space="preserve"><value>1. Prefix / Suffix use text bytes.
+2. HideStart / HideEnd / HideMiddle use byte lengths.
+3. Replace uses both A and B.</value></data><data name="data_rule_trace_caption" xml:space="preserve"><value>The latest trace appears here after a Data Rule is executed.</value></data><data name="confirm_title" xml:space="preserve"><value>Confirm: {0}</value></data><data name="save_text_filter" xml:space="preserve"><value>Log/Text files (*.log;*.txt)|*.log;*.txt|All files (*.*)|*.*</value></data><data name="logs_include_sensitive_payloads" xml:space="preserve"><value>Include device identifiers, scan content, and raw diagnostic payloads in exports</value></data><data name="serial_target_label" xml:space="preserve"><value>COM target</value></data><data name="serial_refresh_ports" xml:space="preserve"><value>Refresh ports</value></data><data name="device_action_column_name" xml:space="preserve"><value>Name</value></data><data name="device_action_column_source_risk" xml:space="preserve"><value>Source / risk</value></data><data name="device_action_column_status" xml:space="preserve"><value>Status</value></data><data name="fake_mode_banner" xml:space="preserve"><value>FAKE MODE - NOT COMPATIBILITY EVIDENCE</value></data><data name="settings_label" xml:space="preserve"><value>Settings</value></data></root>

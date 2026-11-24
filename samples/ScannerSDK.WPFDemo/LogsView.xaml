@@ -1,0 +1,67 @@
+<UserControl x:Class="ScannerSDK.WPFDemo.LogsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DemoStyles.xaml" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Style="{StaticResource SurfaceCard}">
+            <StackPanel>
+                <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding LogsFiltersTitle}" />
+                <TextBlock Margin="0,4,0,10" Style="{StaticResource SectionCaptionText}" Text="{Binding LogsFiltersCaption}" />
+                <WrapPanel>
+                    <TextBox Width="220"
+                             Height="34"
+                             Margin="0,0,8,8"
+                             Text="{Binding LogStore.Query, UpdateSourceTrigger=PropertyChanged}"
+                             AutomationProperties.Name="{Binding LogsFiltersTitle}" />
+                    <ComboBox Width="150"
+                              Margin="0,0,8,8"
+                              ItemsSource="{Binding LogStore.LevelFilters}"
+                              SelectedItem="{Binding LogStore.LevelFilter}" />
+                    <Button Content="{Binding LogsCopyAllButtonText}" Command="{Binding CopyAllLogsCommand}" />
+                    <Button Content="{Binding LogsCopyFilteredButtonText}" Command="{Binding CopyFilteredLogsCommand}" />
+                    <Button Content="{Binding LogsExportAllButtonText}" Command="{Binding ExportAllLogsCommand}" />
+                    <Button Content="{Binding LogsExportFilteredButtonText}" Command="{Binding ExportFilteredLogsCommand}" />
+                    <Button Style="{StaticResource PrimaryButton}" Content="{Binding LogsCompatibilityButtonText}" Command="{Binding ExportCompatibilityRecordCommand}" />
+                    <Button Style="{StaticResource DangerButton}" Content="{Binding LogsClearButtonText}" Command="{Binding ClearLogsCommand}" />
+                </WrapPanel>
+                <CheckBox Content="{Binding LogsIncludeSensitivePayloadsText}"
+                          IsChecked="{Binding IncludeSensitivePayloadsInExport}" />
+            </StackPanel>
+        </Border>
+
+        <DataGrid x:Name="LogDataGrid"
+                  Grid.Row="1"
+                  ItemsSource="{Binding LogStore.EntriesView}"
+                  IsReadOnly="True"
+                  AutomationProperties.Name="{Binding TabLogsText}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding TimeText}" Width="175">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.LogsColumnTimeTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding SourceDisplay}" Width="105">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.LogsColumnSourceTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding LevelDisplay}" Width="90">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.LogsColumnLevelTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DisplayText}" Width="*">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.LogsColumnMessageTitle, RelativeSource={RelativeSource AncestorType=UserControl}}" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

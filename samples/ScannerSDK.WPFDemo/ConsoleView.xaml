@@ -1,0 +1,259 @@
+<UserControl x:Class="ScannerSDK.WPFDemo.ConsoleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:ScannerSDK.WPFDemo">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DemoStyles.xaml" />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Border Style="{StaticResource SurfaceCard}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding ConsoleStatusTitle}" />
+                    <WrapPanel Margin="0,8,0,0">
+                        <TextBlock Margin="0,0,18,0" Text="{Binding SessionStateText}" />
+                        <TextBlock Margin="0,0,18,0" Text="{Binding ResolvedModelSummary}" />
+                        <TextBlock Foreground="{StaticResource TextSecondaryBrush}" Text="{Binding OperationSupportSummary}" />
+                    </WrapPanel>
+                </StackPanel>
+                <WrapPanel Grid.Column="1">
+                    <Button Content="{Binding ConsoleBackToDiscoveryButtonText}" Command="{Binding BackToDiscoveryCommand}" />
+                    <Button Style="{StaticResource DangerButton}"
+                            Content="{Binding ConsoleDisconnectButtonText}"
+                            Command="{Binding DisconnectCommand}"
+                            IsEnabled="{Binding CanDisconnectSurface}" />
+                </WrapPanel>
+            </Grid>
+        </Border>
+
+        <TabControl Grid.Row="1" SelectedIndex="{Binding SelectedConsoleTabIndex}">
+            <TabItem Header="{Binding ConsoleTabActionsText}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DynamicOperationTitle}" />
+                            <TextBlock Margin="0,4,0,12"
+                                       Style="{StaticResource SectionCaptionText}"
+                                       Text="{Binding DynamicOperationCaption}" />
+                            <Border Style="{StaticResource SurfaceCard}"
+                                    Visibility="{Binding IsOperationCatalogEmpty, Converter={StaticResource BoolToVisibility}}">
+                                <TextBlock Foreground="{StaticResource TextSecondaryBrush}"
+                                           Text="{Binding DynamicOperationEmptyText}"
+                                           TextWrapping="Wrap" />
+                            </Border>
+                            <ItemsControl ItemsSource="{Binding OperationGroups}">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Style="{StaticResource SurfaceCard}">
+                                            <StackPanel>
+                                                <DockPanel Margin="0,0,0,10">
+                                                    <TextBlock DockPanel.Dock="Left"
+                                                               Style="{StaticResource SectionTitleText}"
+                                                               Text="{Binding Title}" />
+                                                    <TextBlock HorizontalAlignment="Right"
+                                                               Foreground="{StaticResource TextMutedBrush}"
+                                                               Text="{Binding Summary}" />
+                                                </DockPanel>
+                                                <ItemsControl ItemsSource="{Binding Operations}">
+                                                    <ItemsControl.ItemsPanel>
+                                                        <ItemsPanelTemplate>
+                                                            <WrapPanel />
+                                                        </ItemsPanelTemplate>
+                                                    </ItemsControl.ItemsPanel>
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <Border Width="340"
+                                                                    MinHeight="180"
+                                                                    Margin="0,0,10,10"
+                                                                    Style="{StaticResource PanelCard}">
+                                                                <StackPanel>
+                                                                    <DockPanel>
+                                                                        <TextBlock DockPanel.Dock="Left"
+                                                                                   FontSize="15"
+                                                                                   FontWeight="SemiBold"
+                                                                                   Foreground="{StaticResource TextPrimaryBrush}"
+                                                                                   Text="{Binding Title}" />
+                                                                        <TextBlock HorizontalAlignment="Right"
+                                                                                   FontSize="11"
+                                                                                   Foreground="{StaticResource TextMutedBrush}"
+                                                                                   Text="{Binding RiskBadgeText}" />
+                                                                    </DockPanel>
+                                                                    <TextBlock MinHeight="38"
+                                                                               Margin="0,6,0,8"
+                                                                               Foreground="{StaticResource TextSecondaryBrush}"
+                                                                               Text="{Binding Description}"
+                                                                               TextWrapping="Wrap" />
+                                                                    <TextBox Height="34"
+                                                                             Margin="0,0,0,8"
+                                                                             ToolTip="{Binding ValueHint}"
+                                                                             Text="{Binding InputValue, UpdateSourceTrigger=PropertyChanged}"
+                                                                             Visibility="{Binding RequiresValue, Converter={StaticResource BoolToVisibility}}" />
+                                                                    <TextBlock Margin="0,0,0,8"
+                                                                               Foreground="{StaticResource TextMutedBrush}"
+                                                                               Text="{Binding AvailabilityText}"
+                                                                               TextWrapping="Wrap" />
+                                                                    <WrapPanel>
+                                                                        <Button Content="{Binding PrimaryButtonText}"
+                                                                                Command="{Binding DataContext.ExecuteDemoOperationCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                CommandParameter="{Binding}"
+                                                                                IsEnabled="{Binding IsEnabled}"
+                                                                                ToolTip="{Binding DisabledReason}">
+                                                                            <Button.Style>
+                                                                                <Style TargetType="Button" BasedOn="{StaticResource PrimaryButton}">
+                                                                                    <Style.Triggers>
+                                                                                        <DataTrigger Binding="{Binding Dangerous}" Value="True">
+                                                                                            <Setter Property="Background" Value="{StaticResource DangerSoftBrush}" />
+                                                                                            <Setter Property="BorderBrush" Value="{StaticResource DangerBrush}" />
+                                                                                            <Setter Property="Foreground" Value="{StaticResource DangerBrush}" />
+                                                                                        </DataTrigger>
+                                                                                    </Style.Triggers>
+                                                                                </Style>
+                                                                            </Button.Style>
+                                                                        </Button>
+                                                                        <Button Content="{Binding SecondaryButtonText}"
+                                                                                Command="{Binding DataContext.ExecuteDemoOperationSecondaryCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                                                CommandParameter="{Binding}"
+                                                                                IsEnabled="{Binding IsEnabled}"
+                                                                                ToolTip="{Binding DisabledReason}"
+                                                                                Visibility="{Binding HasSecondaryAction, Converter={StaticResource BoolToVisibility}}" />
+                                                                    </WrapPanel>
+                                                                    <TextBlock FontSize="11"
+                                                                               Foreground="{StaticResource TextMutedBrush}"
+                                                                               Text="{Binding Status}" />
+                                                                </StackPanel>
+                                                            </Border>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Style="{StaticResource SurfaceCard}" Margin="0,0,8,12">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding ScanWorkspaceLastScanTitle}" />
+                                    <TextBlock Margin="0,10,0,4" FontSize="20" FontWeight="SemiBold" Text="{Binding LastScanText}" TextWrapping="Wrap" />
+                                    <TextBlock Foreground="{StaticResource TextSecondaryBrush}" Text="{Binding LastScanMetadata}" TextWrapping="Wrap" />
+                                    <TextBox Margin="0,10,0,0"
+                                             Height="70"
+                                             Style="{StaticResource ConsoleInfoTextBox}"
+                                             Text="{Binding LastScanRawHex, Mode=OneWay}" />
+                                </StackPanel>
+                            </Border>
+                            <Border Grid.Column="1" Style="{StaticResource SurfaceCard}" Margin="8,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding BottomDeviceInfoTitle}" />
+                                    <TextBox Margin="0,10,0,0"
+                                             Height="155"
+                                             Style="{StaticResource ConsoleInfoTextBox}"
+                                             Text="{Binding DeviceInfoText, Mode=OneWay}" />
+                                    <TextBlock Margin="0,10,0,0" Text="{Binding BatteryText}" TextWrapping="Wrap" />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="{Binding ConsoleTabCapabilitiesText}">
+                <local:CapabilityCatalogView Margin="10" />
+            </TabItem>
+
+            <TabItem Header="{Binding ConsoleTabDataRulesText}">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="10">
+                        <Border Style="{StaticResource SurfaceCard}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DataRuleBuilderTitleText}" />
+                                <TextBlock Margin="0,4,0,12"
+                                           Style="{StaticResource SectionCaptionText}"
+                                           Text="{Binding DataRuleBuilderCaptionText}" />
+                                <TextBlock Foreground="{StaticResource TextSecondaryBrush}" Text="{Binding DataRuleCapabilityHintText}" TextWrapping="Wrap" />
+                                <Grid Margin="0,14,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="220" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <ComboBox ItemsSource="{Binding DataRuleModeOptions}"
+                                              SelectedItem="{Binding SelectedDataRuleModeOption}"
+                                              DisplayMemberPath="DisplayName"
+                                              AutomationProperties.Name="{Binding DataRuleModeText}" />
+                                    <TextBox Grid.Column="1"
+                                             Height="34"
+                                             Margin="10,0,0,0"
+                                             Text="{Binding DataRuleValueA, UpdateSourceTrigger=PropertyChanged}"
+                                             AutomationProperties.Name="{Binding DataRulePrimaryValueText}" />
+                                    <TextBox Grid.Column="2"
+                                             Height="34"
+                                             Margin="10,0,0,0"
+                                             Text="{Binding DataRuleValueB, UpdateSourceTrigger=PropertyChanged}"
+                                             Visibility="{Binding DataRuleValueBVisibility}"
+                                             AutomationProperties.Name="{Binding DataRuleSecondaryValueText}" />
+                                </Grid>
+                                <Button Margin="0,12,0,0"
+                                        HorizontalAlignment="Left"
+                                        Style="{StaticResource PrimaryButton}"
+                                        Content="{Binding DiscoveryDataRuleButtonText}"
+                                        Command="{Binding ApplyDataRuleCommand}"
+                                        IsEnabled="{Binding CanExecuteDataRuleSurface}" />
+                            </StackPanel>
+                        </Border>
+                        <Border Style="{StaticResource SurfaceCard}">
+                            <StackPanel>
+                                <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiagnosticsResultFailureTitle}" />
+                                <TextBox Margin="0,10,0,0"
+                                         MinHeight="140"
+                                         Style="{StaticResource ConsoleInfoTextBox}"
+                                         Text="{Binding LastResultText, Mode=OneWay}" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </ScrollViewer>
+            </TabItem>
+
+            <TabItem Header="{Binding ConsoleTabDiagnosticsText}">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Style="{StaticResource SurfaceCard}" Margin="0,0,8,12">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiagnosticsStatusSnapshotTitle}" />
+                            <TextBox Margin="0,10,0,0"
+                                     Style="{StaticResource ConsoleInfoTextBox}"
+                                     Text="{Binding DiagnosticsSummary, Mode=OneWay}" />
+                        </StackPanel>
+                    </Border>
+                    <Border Grid.Column="1" Style="{StaticResource SurfaceCard}" Margin="8,0,0,12">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource SectionTitleText}" Text="{Binding DiagnosticsCommandTraceTitle}" />
+                            <TextBox Margin="0,10,0,0"
+                                     Style="{StaticResource ConsoleInfoTextBox}"
+                                     Text="{Binding CommandTraceText, Mode=OneWay}" />
+                            <TextBlock Margin="0,10,0,0" Foreground="{StaticResource DangerBrush}" Text="{Binding RecentFailureText}" TextWrapping="Wrap" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</UserControl>
